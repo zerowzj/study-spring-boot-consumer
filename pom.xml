@@ -30,7 +30,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -45,7 +44,6 @@
             <groupId>com.company.project</groupId>
             <artifactId>spring-boot-api</artifactId>
             <version>1.0</version>
-
         </dependency>
     </dependencies>
 </project>
