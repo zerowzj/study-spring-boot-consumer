@@ -1,7 +1,8 @@
 package com.company.project.controller;
 
-import com.company.project.api.DemoApiClient;
-import com.company.project.bean.DemoBean;
+import com.company.project.api.DemoApi;
+import com.company.project.bean.DemoParam;
+import com.company.project.bean.DemoResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,16 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
     @Autowired
-    private DemoApiClient demoApiClient;
+    private DemoApi demoApi;
 
     @RequestMapping("/demo/sayHi")
     public String sayHi() {
-        return demoApiClient.sayHi("wangzhj");
+        return demoApi.sayHi("wangzhj");
     }
 
     @RequestMapping("/demo/sayBye")
     public String sayBye() {
-        DemoBean bean = demoApiClient.sayBye("xiaohong");
-        return bean.getMsg();
+        DemoParam param = new DemoParam();
+        param.setName("wangzhj");
+        DemoResult bean = demoApi.sayBye(param);
+        return bean.getName() + "==" + bean.getMsg();
     }
 }
