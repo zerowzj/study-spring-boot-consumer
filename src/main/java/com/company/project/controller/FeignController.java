@@ -19,6 +19,6 @@ public class FeignController {
 
     @GetMapping("/sayHi")
     public void sayHi() {
-        demoService.sayBye("wangzhj");
+        demoService.welcome("wangzhj");
     }
 }
