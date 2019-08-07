@@ -11,6 +11,8 @@ spring:
     name: springcloud-consumer
 ###
 eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance-id:${server.port}}
   client:
     service-url:
       defaultZone: http://127.0.0.1:7000/eureka/
