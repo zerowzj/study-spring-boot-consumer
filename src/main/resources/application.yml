@@ -7,7 +7,7 @@ logging:
 #
 spring:
   application:
-    name: springcloud-consumer
+    name: study-springcloud-consumer
 
 #
 eureka:
@@ -15,4 +15,7 @@ eureka:
     instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance-id:${server.port}}
   client:
     service-url:
-      defaultZone: http://127.0.0.1:7000/eureka/
+      defaultZone: http://114.67.102.8:7010/eureka/
+ribbon:
+  eager-load:
+    clients:
