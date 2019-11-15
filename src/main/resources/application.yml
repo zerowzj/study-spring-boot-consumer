@@ -17,8 +17,6 @@ eureka:
     service-url:
       defaultZone: http://114.67.102.8:7010/eureka/
 # 负责均衡
-#ribbon:
-#  eager-load:
-#    clients:
+ribbon:
 
 # 熔断
