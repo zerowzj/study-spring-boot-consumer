@@ -1,4 +1,4 @@
-package study.springcloud.consumer.support.config;
+package study.springcloud.consumer.support.feign;
 
 import feign.Logger;
 import org.springframework.context.annotation.Bean;
