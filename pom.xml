@@ -42,16 +42,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- ==================== -->
-        <!-- Eureka                -->
-        <!-- ==================== -->
+        <!-- =============== -->
+        <!-- Eureka          -->
+        <!-- =============== -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-        <!-- ==================== -->
-        <!-- Feign                -->
-        <!-- ==================== -->
+        <!-- =============== -->
+        <!-- Feign           -->
+        <!-- =============== -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -61,9 +61,9 @@
             <artifactId>spring-cloud-starter-ribbon</artifactId>
         </dependency>
 
-        <!-- ==================== -->
-        <!-- Hystrix & Dashboard  -->
-        <!-- ==================== -->
+        <!-- =============== -->
+        <!-- Hystrix         -->
+        <!-- =============== -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
