@@ -12,7 +12,7 @@ spring:
 #
 eureka:
   instance:
-    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance-id:${server.port}}
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance-id}:${server.port}
   client:
     service-url:
       defaultZone: http://114.67.102.8:7010/eureka/
