@@ -16,6 +16,6 @@ eureka:
   client:
     service-url:
       defaultZone: http://114.67.102.8:7010/eureka/
-ribbon:
-  eager-load:
-    clients:
+#ribbon:
+#  eager-load:
+#    clients:
