@@ -1,4 +1,4 @@
-package com.company.project.controller;
+package study.springcloud.consumer.controller;
 
 import com.company.project.service.DemoService;
 import org.slf4j.Logger;

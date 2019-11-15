@@ -1,4 +1,4 @@
-package com.company.project.support.config;
+package study.springcloud.consumer.support.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

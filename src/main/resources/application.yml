@@ -1,15 +1,15 @@
-###
+#
 server:
-  address: 127.0.0.1
-  port: 9000
-###
+  port: 7080
+#
 logging:
   config: classpath:logback.xml
-###
+#
 spring:
   application:
     name: springcloud-consumer
-###
+
+#
 eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance-id:${server.port}}

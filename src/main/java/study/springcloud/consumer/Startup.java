@@ -1,6 +1,6 @@
-package com.company.project;
+package study.springcloud.consumer;
 
-import com.company.project.support.config.SpringBootCfg;
+import study.springcloud.consumer.support.SpringBootCfg;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
