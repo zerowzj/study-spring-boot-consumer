@@ -36,7 +36,9 @@ security:
     client:
       client-id: client_id
       client-secret: client_secret
+      #密码
       access-token-uri: http://127.0.0.1:7030/oauth/token
+      #授权码认证
       user-authorization-uri: http://127.0.0.1:7030/oauth/authorize
     #
     resource:
