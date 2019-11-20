@@ -28,14 +28,16 @@ study-springcloud-provider:
     #负载均衡的规则，表示加权规则，yml配置优先级第一，Java代码第二，默认的最后
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 ####################
-#（★）
+#（★）资源服务器
 ####################
 security:
   oauth2:
+    #
     client:
-      clientId: test_client
-      clientSecret: test_client
-      accessTokenUri: http://localhost:8080/auth/oauth/token
-      userAuthorizationUri: http://localhost:8080/auth/oauth/authorize
+      client-id: client_id
+      client-secret: client_secret
+      access-token-uri: http://127.0.0.1:7030/oauth/token
+      user-authorization-uri: http://127.0.0.1:7030/oauth/authorize
+    #
     resource:
-      userInfoUri: http://localhost:8080/auth/user/me
+      user-info-uri: http://127.0.0.1:8080/auth/user/me
