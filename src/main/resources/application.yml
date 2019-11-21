@@ -34,13 +34,15 @@ study-springcloud-provider:
 security:
   oauth2:
     #
+    resource:
+      resource:
+        user-info-uri: http://localhost:9098/users/current
     client:
+      #grant-type: client_credentials
+      #客户端ID和密钥
       client-id: client_id
       client-secret: client_secret
-      #密码
+      #令牌端点
       access-token-uri: http://127.0.0.1:7030/oauth/token
-      #授权码认证
+      #授权端点
       user-authorization-uri: http://127.0.0.1:7030/oauth/authorize
-    #
-    resource:
-      user-info-uri: http://127.0.0.1:8080/auth/user/me
