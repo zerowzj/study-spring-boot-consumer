@@ -9,7 +9,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 //@EnableEurekaClient
 @EnableOAuth2Client
-//@EnableResourceServer
+@EnableResourceServer
 @EnableFeignClients(basePackages = {"study.springcloud.provider"})
 @SpringBootApplication(scanBasePackages = "study.springcloud.consumer")
 public class SpringBootCfg {

@@ -14,13 +14,16 @@ public class WebSecurityCfg extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.requestMatchers()
                 .antMatchers("/**")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
                 .and()
-                .csrf()
-                .disable();
+                .authorizeRequests()
+                .antMatchers("/**")
+                .authenticated();
+//                .antMatchers("/**")
+//                .authenticated()
+//                .and()
+//                .csrf()
+//                .disable();
     }
 }
