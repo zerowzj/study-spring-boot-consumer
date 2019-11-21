@@ -9,39 +9,9 @@ spring:
   application:
     name: study-springcloud-consumer
 #
-#eureka:
-#  instance:
-#    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
-#  client:
-#    service-url:
-#      defaultZone: http://114.67.102.8:7010/eureka/
-
-####################
-#（★）负载均衡
-####################
-#（1）全局配置
-ribbon:
-  eager-load: true
-#（2）客户端配置
-study-springcloud-provider:
-  ribbon:
-    #负载均衡的规则，表示加权规则，yml配置优先级第一，Java代码第二，默认的最后
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-
-####################
-#（★）资源服务器
-####################
-security:
-  oauth2:
-    resource:
-      user-info-uri: http://localhost:9098/users/current
-    client:
-      #授权类型
-      authorized-grant-types: client_credentials, password
-      #客户端ID和密钥
-      client-id: client_id
-      client-secret: client_secret
-      #令牌端点
-      access-token-uri: http://127.0.0.1:7030/oauth/token
-      #授权端点
-      user-authorization-uri: http://127.0.0.1:7030/oauth/authorize
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://114.67.102.8:7010/eureka/
