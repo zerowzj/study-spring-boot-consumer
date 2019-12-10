@@ -1,6 +1,6 @@
 #
 server:
-  port: 7080
+  port: 7301
 #
 logging:
   config: classpath:logback.xml
@@ -17,13 +17,13 @@ eureka:
   instance:
     hostname: study-springcloud-consumer
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    prefer-ip-address: true
+    prefer-ip-address: false
     lease-renewal-interval-in-seconds: 30
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://114.67.102.8:7101/eureka
+      defaultZone: @eureka.instance.defaultZone@
 #########################
 #（★）
 #########################

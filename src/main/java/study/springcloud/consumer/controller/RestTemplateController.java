@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -16,6 +17,12 @@ public class RestTemplateController {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @PostMapping("/ribbon")
+    public String ribbon() {
+        String str = restTemplate.postForObject("http://study-springcloud-provider/getServerInfo", null, String.class);
+        return str;
+    }
 
     @GetMapping("/sayHi")
     public void sayHi() {
