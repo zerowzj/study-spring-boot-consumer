@@ -58,22 +58,11 @@ ribbon:
   OkToRetryOnAllOperations: true
   #对Http响应码进行重试
   retryableStatusCodes: 404,500,502
-  #（▲）负载均衡配置
-  #配置Ribbon负载均衡规则
-  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-#  #配置Ribbon实例检查策略:IPing
-#  NFLoadBalancerPingClassName:
-#  #配置负载均衡器:ILoadBalancer
-#  NFLoadBalancerClassName:
-#  #配置服务实例清单维护机制:ServerList
-#  NIWSServerListClassName:
-#  #配置服务清单过滤机制:ServerListFilter
-#  NIWSServerListFilterClassName:
 #（2）服务配置
-#study-springcloud-provider:
-#  ribbon:
-#    #配置Ribbon负载均衡规则:IRule
-#    NFLoadBalancerRuleClassName: com.ley.springcloud.client.rule.MyRoundRobinRule
+study-springcloud-provider:
+  ribbon:
+    #配置Ribbon负载均衡规则:IRule
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 #    #配置Ribbon实例检查策略:IPing
 #    NFLoadBalancerPingClassName:
 #    #配置负载均衡器:ILoadBalancer
