@@ -19,11 +19,18 @@ eureka:
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
     prefer-ip-address: false
     lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: @eureka.instance.defaultZone@
 #########################
-#（★）
+#（★）Ribbon
+#########################
+ribbon:
+  #饥饿加载
+  eager-load: true
+#########################
+#（★）Feign
 #########################

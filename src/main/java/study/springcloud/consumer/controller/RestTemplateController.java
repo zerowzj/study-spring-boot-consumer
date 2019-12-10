@@ -21,6 +21,7 @@ public class RestTemplateController {
     @PostMapping("/ribbon")
     public String ribbon() {
         String str = restTemplate.postForObject("http://study-springcloud-provider/getServerInfo", null, String.class);
+//        String str = restTemplate.postForObject("http://study-springcloud-provider/getServerInfo", null, String.class);
         return str;
     }
 
