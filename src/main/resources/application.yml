@@ -33,9 +33,13 @@ ribbon:
   eureka:
     #禁用 Eureka，禁用之后不能使用服务名调用，必须指定服务地址
     enabled: true
-  #饥饿加载
-  eager-load: true
-  #（▲超时设置）
+  #（▲）饥饿加载
+  eager-load:
+    #开启 Ribbon 的饥饿加载模式
+    enabled: true
+    #指定需要饥饿加载的服务，逗号隔开
+    clients: study-springcloud-provider
+  #（▲）超时设置
   #请求连接超时时间，单位ms
   ConnectTimeout: 250
   #请求处理超时时间，单位ms
@@ -55,16 +59,16 @@ ribbon:
   #对Http响应码进行重试
   retryableStatusCodes: 404,500,502
   #（▲）负载均衡配置
-  #负载均衡规则
+  #配置Ribbon负载均衡规则
   NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-  #配置Ribbon实例检查策略:IPing
-  NFLoadBalancerPingClassName:
-  #配置负载均衡器:ILoadBalancer
-  NFLoadBalancerClassName:
-  #配置服务实例清单维护机制:ServerList
-  NIWSServerListClassName:
-  #配置服务清单过滤机制:ServerListFilter
-  NIWSServerListFilterClassName:
+#  #配置Ribbon实例检查策略:IPing
+#  NFLoadBalancerPingClassName:
+#  #配置负载均衡器:ILoadBalancer
+#  NFLoadBalancerClassName:
+#  #配置服务实例清单维护机制:ServerList
+#  NIWSServerListClassName:
+#  #配置服务清单过滤机制:ServerListFilter
+#  NIWSServerListFilterClassName:
 #（2）服务配置
 #study-springcloud-provider:
 #  ribbon:
