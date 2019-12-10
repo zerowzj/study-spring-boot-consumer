@@ -35,7 +35,7 @@ ribbon:
     enabled: true
   #（▲）饥饿加载
   eager-load:
-    #开启 Ribbon 的饥饿加载模式
+    #是否开启Ribbon的饥饿加载模式，默认false
     enabled: true
     #指定需要饥饿加载的服务，逗号隔开
     clients: study-springcloud-provider
