@@ -19,7 +19,7 @@ spring:
 #########################
 eureka:
   instance:
-    #hostname: study-springcloud-consumer
+    hostname: study-springcloud-client-rest
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
     prefer-ip-address: false
     lease-renewal-interval-in-seconds: 30
@@ -34,14 +34,12 @@ eureka:
 #########################
 #（1）全局配置
 ribbon:
-  #（▲）集成Eureka配置
+  #禁用Eureka，禁用之后不能使用服务名调用，必须指定服务地址
   eureka:
-    #禁用Eureka，禁用之后不能使用服务名调用，必须指定服务地址
     enabled: true
   #（▲）饥饿加载配置
   eager-load:
-    #是否开启饥饿加载模式，默认false
-    enabled: true
+    enabled: true #是否开启饥饿加载模式，默认false
     #指定需要饥饿加载的服务，逗号隔开
     clients: study-springcloud-provider
   #（▲）超时设置
@@ -64,7 +62,7 @@ ribbon:
   #对Http响应码进行重试
   retryableStatusCodes: 404,500,502
   #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-#（2）特定Client配置
+#（2）Client配置
 #study-springcloud-provider:
 #  ribbon:
 #    #负载均衡器操作接口（ILoadBalancer）
