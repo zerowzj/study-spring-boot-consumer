@@ -1,4 +1,4 @@
-package study.springcloud.consumer.support;
+package study.springcloud.client.rest.support;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;

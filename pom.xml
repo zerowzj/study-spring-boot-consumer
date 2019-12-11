@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>study.springcloud</groupId>
-    <artifactId>study-springcloud-consumer</artifactId>
+    <artifactId>study-springcloud-client-rest</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
@@ -49,13 +49,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-<!--        &lt;!&ndash; ==================== &ndash;&gt;-->
-<!--        &lt;!&ndash;（★）Feign           &ndash;&gt;-->
-<!--        &lt;!&ndash; ==================== &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-openfeign</artifactId>-->
-<!--        </dependency>-->
         <!-- ==================== -->
         <!--（★）Ribbon          -->
         <!-- ==================== -->

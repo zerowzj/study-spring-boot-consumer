@@ -1,9 +1,9 @@
-package study.springcloud.consumer;
+package study.springcloud.client.rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
-import study.springcloud.consumer.support.SpringBootCfg;
+import study.springcloud.client.rest.support.SpringBootCfg;
 
 public class Startup {
 

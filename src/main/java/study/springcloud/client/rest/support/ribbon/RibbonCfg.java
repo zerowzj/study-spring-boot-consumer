@@ -1,4 +1,4 @@
-package study.springcloud.consumer.support.ribbon;
+package study.springcloud.client.rest.support.ribbon;
 
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.RandomRule;
