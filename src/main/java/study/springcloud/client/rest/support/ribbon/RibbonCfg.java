@@ -25,7 +25,7 @@ public class RibbonCfg {
     }
 
 //    @Bean
-//    public ServerList<Server> ribbonServerList(IClientConfig config) {
+//    public ServerList<Server> ribbonServerList() {
 //        return new ConfigurationBasedServerList();
 //    }
 
