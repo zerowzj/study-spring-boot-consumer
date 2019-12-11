@@ -42,30 +42,30 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- =============== -->
+        <!-- ==================== -->
         <!--（★）Eureka      -->
-        <!-- =============== -->
+        <!-- ==================== -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-        <!-- =============== -->
-        <!--（★）Feign      -->
-        <!-- =============== -->
+        <!-- ==================== -->
+        <!--（★）Feign           -->
+        <!-- ==================== -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-        <!-- =============== -->
+        <!-- ==================== -->
         <!--（★）Ribbon      -->
-        <!-- =============== -->
+        <!-- ==================== -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
         </dependency>
-        <!-- =============== -->
+        <!-- ==================== -->
         <!-- （★）Hystrix    -->
-        <!-- =============== -->
+        <!-- ==================== -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
@@ -74,9 +74,9 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
         </dependency>
-        <!-- =============== -->
-        <!-- （★）    -->
-        <!-- =============== -->
+        <!-- ==================== -->
+        <!-- （★）Spring Retry    -->
+        <!-- ==================== -->
         <dependency>
             <groupId>org.springframework.retry</groupId>
             <artifactId>spring-retry</artifactId>
