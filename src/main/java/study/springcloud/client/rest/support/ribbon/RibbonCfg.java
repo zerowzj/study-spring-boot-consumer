@@ -24,10 +24,10 @@ public class RibbonCfg {
         return new PingUrl();
     }
 
-    @Bean
-    public ServerList<Server> ribbonServerList(IClientConfig config) {
-        return new ConfigurationBasedServerList();
-    }
+//    @Bean
+//    public ServerList<Server> ribbonServerList(IClientConfig config) {
+//        return new ConfigurationBasedServerList();
+//    }
 
     @Bean
     public ServerListSubsetFilter serverListFilter() {
