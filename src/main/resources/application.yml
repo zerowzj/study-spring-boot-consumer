@@ -63,6 +63,7 @@ ribbon:
   OkToRetryOnAllOperations: true
   #对Http响应码进行重试
   retryableStatusCodes: 404,500,502
+  #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 #（2）特定Client配置
 #study-springcloud-provider:
 #  ribbon:
