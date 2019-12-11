@@ -43,28 +43,28 @@
             </exclusions>
         </dependency>
         <!-- ==================== -->
-        <!--（★）Eureka      -->
+        <!--（★）Eureka          -->
         <!-- ==================== -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
+<!--        &lt;!&ndash; ==================== &ndash;&gt;-->
+<!--        &lt;!&ndash;（★）Feign           &ndash;&gt;-->
+<!--        &lt;!&ndash; ==================== &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-openfeign</artifactId>-->
+<!--        </dependency>-->
         <!-- ==================== -->
-        <!--（★）Feign           -->
-        <!-- ==================== -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-        <!-- ==================== -->
-        <!--（★）Ribbon      -->
+        <!--（★）Ribbon          -->
         <!-- ==================== -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
         </dependency>
         <!-- ==================== -->
-        <!-- （★）Hystrix    -->
+        <!-- （★）Hystrix        -->
         <!-- ==================== -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -75,7 +75,7 @@
             <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
         </dependency>
         <!-- ==================== -->
-        <!-- （★）Spring Retry    -->
+        <!-- （★）Spring Retry   -->
         <!-- ==================== -->
         <dependency>
             <groupId>org.springframework.retry</groupId>
