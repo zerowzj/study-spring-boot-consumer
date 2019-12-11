@@ -64,15 +64,15 @@ ribbon:
   #对Http响应码进行重试
   retryableStatusCodes: 404,500,502
 #（2）特定Client配置
-study-springcloud-provider:
-  ribbon:
-    #负载均衡器操作接口: ILoadBalancer
-    NFLoadBalancerClassName: com.netflix.loadbalancer.ZoneAwareLoadBalancer
-    #负载均衡算法: IRule
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-    #配服务可用性检查: IPing
-    NFLoadBalancerPingClassName: com.netflix.loadbalancer.PingUrl
-    #配置服务实例清单维护机制，服务列表获取: ServerList
-    NIWSServerListClassName:
-    #配置服务清单过滤机制，服务列表的过滤: ServerListFilter
-    NIWSServerListFilterClassName: com.netflix.loadbalancer.ServerListSubsetFilter
+#study-springcloud-provider:
+#  ribbon:
+#    #负载均衡器操作接口（ILoadBalancer）
+#    NFLoadBalancerClassName: com.netflix.loadbalancer.ZoneAwareLoadBalancer
+#    #负载均衡算法（IRule）
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#    #服务可用性检查（IPing）
+#    NFLoadBalancerPingClassName: com.netflix.loadbalancer.PingUrl
+#    #服务实例清单维护机制，服务列表获取（ServerList）
+#    NIWSServerListClassName:
+#    #服务清单过滤机制，服务列表的过滤（ServerListFilter）
+#    NIWSServerListFilterClassName: com.netflix.loadbalancer.ServerListSubsetFilter
