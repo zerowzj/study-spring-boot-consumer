@@ -59,9 +59,9 @@ ribbon:
   MaxConnectionsPerHost: 5000
   #（▲）重试配置
   #是否所有操作都进行重试
-  #设置为true时，会对所有的请求进行重试，若为false，只会对get请求进行重试
-  #如果是put或post等写操作，如果服务器接口没做幂等性，会产生不好的结果，所以OkToRetryOnAllOperations慎用。
-  #默认情况下，GET方式请求无论是连接异常还是读取异常，都会进行重试，非GET方式请求，只有连接异常时才会进行重试
+  #设置为true时，会对所有的请求进行重试；若为false，只会对get请求进行重试
+  #如果是put或post等写操作，如果服务器接口没做幂等性，会产生不好的结果，所以OkToRetryOnAllOperations慎用
+  #默认情况下，GET方式请求无论是连接异常还是读取异常，都会进行重试；非GET方式请求，只有连接异常时才会进行重试
   OkToRetryOnAllOperations: true
   #同一实例最大重试次数，不包括首次调用
   MaxAutoRetries: 5
