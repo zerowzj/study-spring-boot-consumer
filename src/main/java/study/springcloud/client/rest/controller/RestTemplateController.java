@@ -20,12 +20,6 @@ public class RestTemplateController {
     @Autowired
     private LoadBalancerClient loadBalancerClient;
 
-    @PostMapping("/getServerInfo")
-    public String getServerInfo() {
-        String str = restTemplate.postForObject("http://study-springcloud-provider/getServerInfo", null, String.class);
-        return str;
-    }
-
     @PostMapping("/demo")
     public String demo() {
         ServiceInstance serviceInstance = loadBalancerClient.choose("study-springcloud-provider");
