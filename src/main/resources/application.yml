@@ -12,6 +12,7 @@ spring:
     web-application-type: servlet
   cloud:
     loadbalancer:
+      #请求重试
       retry:
         enabled: false
 #########################
@@ -43,41 +44,48 @@ ribbon:
   #（▲）饥饿加载配置
   eager-load:
     #是否开启饥饿加载，默认false
+    #为true的时候会关闭懒加载
+    #Ribbon进行客户端负载均衡的Client并不是在服务启动的时候就初始化好的，
+    #而是在调用的时候才会去创建相应的Client，所以第一次调用的耗时不仅仅包含发送HTTP请求的时间，还包含了创建RibbonClient的时间
+    #这样一来如果创建时间速度较慢，同时设置的超时时间又比较短的话，第一次请求很容易超时
     enabled: true
     #指定需要饥饿加载的服务，逗号分隔
     clients: study-springcloud-provider
-  #（▲）超时设置
+  #（▲）超时设置（测试无效）
   #请求连接超时时间，单位ms
-  ConnectTimeout: 5000
+  #ConnectTimeout: 5000
   #请求处理超时时间，单位ms
-  ReadTimeout: 5000
+  #ReadTimeout: 5000
   #（▲）并发设置
-  #最大连接数
-  MaxTotalConnections: 500
-  #每个host最大连接数
-  MaxConnectionsPerHost: 500
+  MaxTotalConnections: 500 #最大连接数
+  MaxConnectionsPerHost: 500  #每个host最大连接数
   #（▲）重试配置
-  #对当前实例的重试次数
-  MaxAutoRetries: 1
-  #切换实例的重试次数
-  MaxAutoRetriesNextServer: 2
-  #对所有操作请求都进行重试
+  #是否所有操作都进行重试
+  #设置为true时，会对所有的请求进行重试，若为false只会对get请求进行重试
+  #如果是put或post等写操作，
+  #如果服务器接口没做幂等性，会产生不好的结果，所以OkToRetryOnAllOperations慎用。
+  #默认情况下,GET方式请求无论是连接异常还是读取异常,都会进行重试
+  #非GET方式请求,只有连接异常时,才会进行重试
   OkToRetryOnAllOperations: true
+  #同一实例最大重试次数，不包括首次调用
+  MaxAutoRetries: 1
+  #重试其他实例的最大重试次数，不包括首次所选的Server
+  MaxAutoRetriesNextServer: 2
   #对Http响应码进行重试
   retryableStatusCodes: 404,500,502
 #（2）Client配置
-#study-springcloud-provider:
-#  ribbon:
-#    eureka:
-#      enabled: true
-#    ConnectTimeout: 250
-#    ReadTimeout: 1000
-#    MaxTotalConnections: 500
-#    MaxConnectionsPerHost: 500
-#    MaxAutoRetries: 1
-#    MaxAutoRetriesNextServer: 2
-#    OkToRetryOnAllOperations: true
-#    retryableStatusCodes: 404,500,502
+study-springcloud-provider:
+  ribbon:
+    eureka:
+      enabled: true
+    ConnectTimeout: 5000
+    ReadTimeout: 5000
+    MaxTotalConnections: 500
+    MaxConnectionsPerHost: 500
+    MaxAutoRetries: 1
+    MaxAutoRetriesNextServer: 2
+    OkToRetryOnAllOperations: true
+    retryableStatusCodes: 404,500,502
 #    #负载均衡器操作接口（ILoadBalancer）
 #    NFLoadBalancerClassName: com.netflix.loadbalancer.ZoneAwareLoadBalancer
 #    #负载均衡算法（IRule）
