@@ -21,13 +21,11 @@ eureka:
     hostname: study-springcloud-client-rest
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
     prefer-ip-address: false
-    lease-renewal-interval-in-seconds: 30
-    lease-expiration-duration-in-seconds: 90
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: @eureka.instance.defaultZone@
+      defaultZone: @eureka.client.serviceUrl.defaultZone@
 #########################
 #（★）Ribbon
 #########################
@@ -37,12 +35,9 @@ ribbon:
   eureka:
     #是否使用Eureka，禁用后不能使用服务名调用，必须指定服务地址
     enabled: true
-    #listOfServers: localhost:8090
-    #serverListRefreshInterval: 15000
   #（▲）饥饿加载配置
   eager-load:
-    #是否开启饥饿加载，默认false
-    #为true的时候会关闭懒加载
+    #是否开启饥饿加载，默认false，为true的时候会关闭懒加载
     #Ribbon进行客户端负载均衡的Client并不是在服务启动的时候就初始化好的，
     #而是在调用的时候才会去创建相应的Client，所以第一次调用的耗时不仅仅包含发送HTTP请求的时间，还包含了创建RibbonClient的时间
     #这样一来如果创建时间速度较慢，同时设置的超时时间又比较短的话，第一次请求很容易超时
@@ -69,24 +64,24 @@ ribbon:
   #默认情况下，GET方式请求无论是连接异常还是读取异常，都会进行重试，非GET方式请求，只有连接异常时才会进行重试
   OkToRetryOnAllOperations: true
   #同一实例最大重试次数，不包括首次调用
-  MaxAutoRetries: 3
-  #重试其他实例的最大重试次数，不包括首次所选的Server
-  MaxAutoRetriesNextServer: 2
-  #对Http响应码进行重试
-  retryableStatusCodes: 404,500,502
+  MaxAutoRetries: 5
+#  #重试其他实例的最大重试次数，不包括首次所选的Server
+#  MaxAutoRetriesNextServer: 2
+#  #对Http响应码进行重试
+#  retryableStatusCodes: 404,500,502
 #（2）Client配置
-study-springcloud-provider:
-  ribbon:
-    eureka:
-      enabled: true
-    ConnectTimeout: 5000
-    ReadTimeout: 5000
-    MaxTotalConnections: 500
-    MaxConnectionsPerHost: 500
-    MaxAutoRetries: 1
-    MaxAutoRetriesNextServer: 2
-    OkToRetryOnAllOperations: true
-    retryableStatusCodes: 404,500,502
+#study-springcloud-provider:
+#  ribbon:
+#    eureka:
+#      enabled: true
+#    ConnectTimeout: 5000
+#    ReadTimeout: 5000
+#    MaxTotalConnections: 500
+#    MaxConnectionsPerHost: 500
+#    MaxAutoRetries: 1
+#    MaxAutoRetriesNextServer: 2
+#    OkToRetryOnAllOperations: true
+#    retryableStatusCodes: 404,500,502
 #    #负载均衡器操作接口（ILoadBalancer）
 #    NFLoadBalancerClassName: com.netflix.loadbalancer.ZoneAwareLoadBalancer
 #    #负载均衡算法（IRule）
