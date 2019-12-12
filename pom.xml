@@ -43,7 +43,7 @@
             </exclusions>
         </dependency>
         <!-- ==================== -->
-        <!--（★）Eureka          -->
+        <!--（★）Eureka Client   -->
         <!-- ==================== -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

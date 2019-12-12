@@ -14,10 +14,8 @@ spring:
     loadbalancer:
       #请求重试
       retry:
-        enabled: false
-#########################
-#（★）Eureka Client
-#########################
+        enabled: true
+#Eureka Client
 eureka:
   instance:
     hostname: study-springcloud-client-rest
@@ -51,24 +49,27 @@ ribbon:
     enabled: true
     #指定需要饥饿加载的服务，逗号分隔
     clients: study-springcloud-provider
-  #（▲）超时设置（测试无效）
-  #请求连接超时时间，单位ms
-  #ConnectTimeout: 5000
-  #请求处理超时时间，单位ms
-  #ReadTimeout: 5000
+  #（▲）超时设置（配置http才生效，使用RibbonClientHttpRequestFactory）
+  http:
+    client:
+      enabled: true
+  #连接超时时间（ms）
+  ConnectTimeout: 5000
+  #处理超时时间（ms）
+  ReadTimeout: 5000
   #（▲）并发设置
-  MaxTotalConnections: 500 #最大连接数
-  MaxConnectionsPerHost: 500  #每个host最大连接数
+  #最大连接数
+  MaxTotalConnections: 5000
+  #每个host最大连接数
+  MaxConnectionsPerHost: 5000
   #（▲）重试配置
   #是否所有操作都进行重试
-  #设置为true时，会对所有的请求进行重试，若为false只会对get请求进行重试
-  #如果是put或post等写操作，
-  #如果服务器接口没做幂等性，会产生不好的结果，所以OkToRetryOnAllOperations慎用。
-  #默认情况下,GET方式请求无论是连接异常还是读取异常,都会进行重试
-  #非GET方式请求,只有连接异常时,才会进行重试
+  #设置为true时，会对所有的请求进行重试，若为false，只会对get请求进行重试
+  #如果是put或post等写操作，如果服务器接口没做幂等性，会产生不好的结果，所以OkToRetryOnAllOperations慎用。
+  #默认情况下，GET方式请求无论是连接异常还是读取异常，都会进行重试，非GET方式请求，只有连接异常时才会进行重试
   OkToRetryOnAllOperations: true
   #同一实例最大重试次数，不包括首次调用
-  MaxAutoRetries: 1
+  MaxAutoRetries: 3
   #重试其他实例的最大重试次数，不包括首次所选的Server
   MaxAutoRetriesNextServer: 2
   #对Http响应码进行重试

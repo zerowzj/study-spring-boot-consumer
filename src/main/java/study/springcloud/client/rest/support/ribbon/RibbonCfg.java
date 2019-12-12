@@ -3,7 +3,6 @@ package study.springcloud.client.rest.support.ribbon;
 import com.netflix.loadbalancer.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.retry.annotation.EnableRetry;
 
 @Configuration
 //@RibbonClients(value = {
