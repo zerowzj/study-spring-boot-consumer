@@ -17,8 +17,8 @@ public class TimeoutController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @PostMapping("/await")
-    public String await(@RequestParam Long timeout) {
+    @PostMapping("/timeout")
+    public String timeout(@RequestParam Long timeout) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         MultiValueMap<String, Object> param = new LinkedMultiValueMap<>();

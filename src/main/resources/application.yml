@@ -14,7 +14,7 @@ spring:
     loadbalancer:
       #请求重试
       retry:
-        enabled: true
+        enabled: false
 #Eureka Client
 eureka:
   instance:
@@ -65,10 +65,10 @@ ribbon:
   OkToRetryOnAllOperations: true
   #同一实例最大重试次数，不包括首次调用
   MaxAutoRetries: 5
-#  #重试其他实例的最大重试次数，不包括首次所选的Server
-#  MaxAutoRetriesNextServer: 2
-#  #对Http响应码进行重试
-#  retryableStatusCodes: 404,500,502
+  #  #重试其他实例的最大重试次数，不包括首次所选的Server
+  MaxAutoRetriesNextServer: 0
+  #  #对Http响应码进行重试
+  retryableStatusCodes: 404,500,502
 #（2）Client配置
 #study-springcloud-provider:
 #  ribbon:
