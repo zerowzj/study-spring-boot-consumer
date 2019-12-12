@@ -13,7 +13,7 @@ spring:
   cloud:
     loadbalancer:
       retry:
-        enabled: true
+        enabled: false
 #########################
 #（★）Eureka Client
 #########################
@@ -38,10 +38,8 @@ ribbon:
   eureka:
     #是否使用Eureka，禁用后不能使用服务名调用，必须指定服务地址
     enabled: true
-    #服务列表
-    #listOfServers: localhost:8090,localhost:9092,localhost:9999
-    #
-    #server-list-refresh-interval: 15000
+    #listOfServers: localhost:8090
+    #serverListRefreshInterval: 15000
   #（▲）饥饿加载配置
   eager-load:
     #是否开启饥饿加载，默认false
@@ -50,9 +48,9 @@ ribbon:
     clients: study-springcloud-provider
   #（▲）超时设置
   #请求连接超时时间，单位ms
-  ConnectTimeout: 250
+  ConnectTimeout: 5000
   #请求处理超时时间，单位ms
-  ReadTimeout: 1000
+  ReadTimeout: 5000
   #（▲）并发设置
   #最大连接数
   MaxTotalConnections: 500

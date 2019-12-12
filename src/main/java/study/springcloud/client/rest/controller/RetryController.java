@@ -12,19 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-public class TimeoutController {
+public class RetryController {
 
     @Autowired
     private RestTemplate restTemplate;
-
-    @PostMapping("/await")
-    public String await(@RequestParam Long timeout) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        MultiValueMap<String, Object> param = new LinkedMultiValueMap<>();
-        param.add("timeout", timeout);
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity(param, headers);
-        String str = restTemplate.postForObject("http://study-springcloud-provider/await", request, String.class);
-        return str;
-    }
 }
