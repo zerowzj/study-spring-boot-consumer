@@ -49,7 +49,7 @@ ribbon:
     client:
       enabled: true
   #连接超时时间（ms）
-  ConnectTimeout: 5000
+  ConnectTimeout: 6000
   #处理超时时间（ms）
   ReadTimeout: 5000
   #（▲）并发设置
