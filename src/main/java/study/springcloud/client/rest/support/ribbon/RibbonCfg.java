@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.retry.annotation.EnableRetry;
 
 @Configuration
-@EnableRetry
 //@RibbonClients(value = {
 //        @RibbonClient(name = "study-springcloud-provider", configuration = RibbonCfg.class)
 ////        ,@RibbonClient(name = "study-springcloud-provider", configuration = RibbonCfg.class)
