@@ -18,7 +18,7 @@ public class RetryController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Retryable
+//    @Retryable(maxAttempts = 6)
     @PostMapping("/retry")
     public void retry(@RequestParam int code) {
         HttpHeaders headers = new HttpHeaders();
