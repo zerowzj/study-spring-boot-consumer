@@ -1,6 +1,8 @@
 package study.springcloud.client.rest.support.ribbon;
 
+import com.netflix.client.config.IClientConfig;
 import com.netflix.loadbalancer.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,6 +12,9 @@ import org.springframework.context.annotation.Configuration;
 ////        ,@RibbonClient(name = "study-springcloud-provider", configuration = RibbonCfg.class)
 //})
 public class RibbonCfg {
+
+    @Autowired
+    private IClientConfig clientConfig;
 
     @Bean
     public IRule ribbonRule() {
