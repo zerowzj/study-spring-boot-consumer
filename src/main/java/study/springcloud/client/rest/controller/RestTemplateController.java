@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -25,5 +24,17 @@ public class RestTemplateController {
         ServiceInstance serviceInstance = loadBalancerClient.choose("study-springcloud-provider");
         String str = restTemplate.postForObject("http://study-springcloud-provider/getServerInfo", null, String.class);
         return str;
+    }
+
+    @PostMapping("/post")
+    public String post() {
+//        restTemplate.postForEntity()
+        return null;
+    }
+
+    @PostMapping("/get")
+    public String get() {
+//        restTemplate.postForEntity()
+        return null;
     }
 }

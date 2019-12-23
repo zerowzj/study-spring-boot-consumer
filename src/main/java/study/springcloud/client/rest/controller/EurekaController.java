@@ -2,6 +2,7 @@ package study.springcloud.client.rest.controller;
 
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/eureka")
 public class EurekaController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(EurekaController.class);
 
     @Autowired
     private EurekaClient eurekaClient;
@@ -26,7 +27,7 @@ public class EurekaController {
     @PostMapping("/getNextServer")
     public InstanceInfo getNextServer() {
         InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka("study-springcloud-provider", false);
-        LOGGER.info("===>{}", instanceInfo);
+        log.info("===>{}", instanceInfo);
         return instanceInfo;
     }
 
