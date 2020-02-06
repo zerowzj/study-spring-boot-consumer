@@ -9,3 +9,4 @@ import org.springframework.retry.annotation.EnableRetry;
 @SpringBootApplication(scanBasePackages = "study.springcloud.client.rest")
 public class SpringBootCfg {
 }
+
