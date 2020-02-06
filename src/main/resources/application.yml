@@ -15,9 +15,9 @@ spring:
       #（▲）请求重试
       retry:
         enabled: false
-#====================
+#==============================
 #（★）Eureka Client
-#====================
+#==============================
 eureka:
   instance:
     hostname: study-springcloud-client-rest
@@ -27,15 +27,13 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: @eureka.client.serviceUrl.defaultZone@
-#====================
+      defaultZone: @eureka.server.list@
+#==============================
 #（★）Ribbon
-#====================
+#==============================
 #（1）全局配置
 ribbon:
-  #（▲）Eureka配置
   eureka:
-    #是否使用Eureka，禁用后不能使用服务名调用，必须指定服务地址
     enabled: true
   #（▲）饥饿加载配置
   eager-load:
@@ -68,7 +66,7 @@ ribbon:
   #重试其他实例的最大重试次数，不包括首次所选的Server
   MaxAutoRetriesNextServer: 1
   #对Http响应码进行重试
-  retryableStatusCodes: 404,500,502
+  RetryableStatusCodes: 404,500,502
 #（2）Client配置
 study-springcloud-provider:
   ribbon:
@@ -81,7 +79,7 @@ study-springcloud-provider:
     MaxAutoRetries: 1
     MaxAutoRetriesNextServer: 2
     OkToRetryOnAllOperations: true
-    retryableStatusCodes: 404,500,502
+    RetryableStatusCodes: 404,500,502
     #负载均衡器操作接口（ILoadBalancer）
     NFLoadBalancerClassName: com.netflix.loadbalancer.ZoneAwareLoadBalancer
     #负载均衡算法（IRule）
