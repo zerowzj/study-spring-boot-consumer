@@ -5,9 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -45,12 +47,15 @@ public class RestTemplateController {
 
     @PostMapping("/postForObject")
     public String postForObject() {
+        //头部
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
         //参数
         Object request = null;
         Class<String> responseType = String.class;
         Object[] uriVariables = null;
+        //
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity(param, headers);
         //
         String response1 = restTemplate.postForObject(url, request, responseType);
         String response2 = restTemplate.postForObject(url, request, responseType, uriVariables);

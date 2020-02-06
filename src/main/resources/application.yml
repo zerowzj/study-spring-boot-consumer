@@ -1,6 +1,6 @@
 #
 server:
-  port: 7300
+  port: 7400
 #
 logging:
   config: classpath:logback.xml
@@ -15,7 +15,9 @@ spring:
       #（▲）请求重试
       retry:
         enabled: false
-#Eureka Client
+#====================
+#（★）Eureka Client
+#====================
 eureka:
   instance:
     hostname: study-springcloud-client-rest
@@ -26,9 +28,9 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: @eureka.client.serviceUrl.defaultZone@
-#########################
+#====================
 #（★）Ribbon
-#########################
+#====================
 #（1）全局配置
 ribbon:
   #（▲）Eureka配置
@@ -48,11 +50,9 @@ ribbon:
   http:
     client:
       enabled: true
-  #连接超时时间（ms）
+  #连接和读取超时时间（ms）
   ConnectTimeout: 6000
-  #处理超时时间（ms）
   ReadTimeout: 5000
-  #（▲）并发设置
   #最大连接数
   MaxTotalConnections: 5000
   #每个host最大连接数
@@ -65,30 +65,30 @@ ribbon:
   OkToRetryOnAllOperations: true
   #同一实例最大重试次数，不包括首次调用
   MaxAutoRetries: 3
-  #  #重试其他实例的最大重试次数，不包括首次所选的Server
+  #重试其他实例的最大重试次数，不包括首次所选的Server
   MaxAutoRetriesNextServer: 1
-  #  #对Http响应码进行重试
+  #对Http响应码进行重试
   retryableStatusCodes: 404,500,502
 #（2）Client配置
-#study-springcloud-provider:
-#  ribbon:
-#    eureka:
-#      enabled: true
-#    ConnectTimeout: 5000
-#    ReadTimeout: 5000
-#    MaxTotalConnections: 500
-#    MaxConnectionsPerHost: 500
-#    MaxAutoRetries: 1
-#    MaxAutoRetriesNextServer: 2
-#    OkToRetryOnAllOperations: true
-#    retryableStatusCodes: 404,500,502
-#    #负载均衡器操作接口（ILoadBalancer）
-#    NFLoadBalancerClassName: com.netflix.loadbalancer.ZoneAwareLoadBalancer
-#    #负载均衡算法（IRule）
-#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-#    #服务可用性检查（IPing）
-#    NFLoadBalancerPingClassName: com.netflix.loadbalancer.PingUrl
-#    #服务实例清单维护机制，服务列表获取（ServerList）
-#    NIWSServerListClassName:
-#    #服务清单过滤机制，服务列表的过滤（ServerListFilter）
-#    NIWSServerListFilterClassName: com.netflix.loadbalancer.ServerListSubsetFilter
+study-springcloud-provider:
+  ribbon:
+    eureka:
+      enabled: true
+    ConnectTimeout: 5000
+    ReadTimeout: 5000
+    MaxTotalConnections: 500
+    MaxConnectionsPerHost: 500
+    MaxAutoRetries: 1
+    MaxAutoRetriesNextServer: 2
+    OkToRetryOnAllOperations: true
+    retryableStatusCodes: 404,500,502
+    #负载均衡器操作接口（ILoadBalancer）
+    NFLoadBalancerClassName: com.netflix.loadbalancer.ZoneAwareLoadBalancer
+    #负载均衡算法（IRule）
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    #服务可用性检查（IPing）
+    NFLoadBalancerPingClassName: com.netflix.loadbalancer.PingUrl
+    #服务实例清单维护机制，服务列表获取（ServerList）
+    NIWSServerListClassName:
+    #服务清单过滤机制，服务列表的过滤（ServerListFilter）
+    NIWSServerListFilterClassName: com.netflix.loadbalancer.ServerListSubsetFilter
