@@ -1,18 +1,17 @@
 package study.springcloud.client.rest.support.rest;
 
-import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.client.Netty4ClientHttpRequestFactory;
 import org.springframework.http.client.OkHttp3ClientHttpRequestFactory;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
-import java.util.List;
 
 @Slf4j
 @Configuration
@@ -23,16 +22,18 @@ public class RestTemplateCfg {
     private static final int DEFAULT_READ_TIMEOUT = 5 * 1000;
 
     @Bean
-//    @LoadBalanced
+    @LoadBalanced
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         RestTemplate restTemplate = builder.setConnectTimeout(Duration.ofSeconds(7))
                 .setReadTimeout(Duration.ofSeconds(7))
                 .build();
 
-        RestTemplate restTemplate = new RestTemplate();
+//        RestTemplate restTemplate = new RestTemplate();
         return restTemplate;
     }
 
+    //    @Bean
+//    @LoadBalanced
     public RestTemplate restTemplateBySimple() {
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
         factory.setReadTimeout(DEFAULT_CONNECTION_TIMEOUT);
@@ -41,6 +42,8 @@ public class RestTemplateCfg {
         return restTemplate;
     }
 
+    //    @Bean
+//    @LoadBalanced
     public RestTemplate restTemplateByHttpComponents() {
         HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory();
         factory.setReadTimeout(DEFAULT_CONNECTION_TIMEOUT);
@@ -49,17 +52,13 @@ public class RestTemplateCfg {
         return restTemplate;
     }
 
+    //    @Bean
+//    @LoadBalanced
     public RestTemplate restTemplateByOkHttp3() {
         OkHttp3ClientHttpRequestFactory factory = new OkHttp3ClientHttpRequestFactory();
         factory.setReadTimeout(DEFAULT_CONNECTION_TIMEOUT);
         factory.setConnectTimeout(DEFAULT_READ_TIMEOUT);
         RestTemplate restTemplate = new RestTemplate(factory);
         return restTemplate;
-    }
-
-    public static void main(String[] args) {
-        List<String> data = Lists.newArrayList("888");
-        data.add("1111");
-        System.out.println(data);
     }
 }

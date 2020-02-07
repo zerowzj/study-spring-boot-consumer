@@ -40,7 +40,7 @@ ribbon:
     client:
       enabled: false
   okhttp:
-    enabled: false
+    enabled: true
   #（▲）超时时间ms（连接和读取）
   ConnectTimeout: 5000
   ReadTimeout: 5000
