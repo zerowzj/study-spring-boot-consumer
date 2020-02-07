@@ -36,14 +36,14 @@ ribbon:
   #（▲）使用Eureka
   eureka:
     enabled: true
-  http:
-    client:
-      enabled: false
-  okhttp:
+  #（▲）使用Eurek
+  httpclient:
     enabled: true
+  okhttp:
+    enabled: false
   #（▲）超时时间ms（连接和读取）
-  ConnectTimeout: 5000
-  ReadTimeout: 5000
+  ConnectTimeout: 3000
+  ReadTimeout: 3000
   #（▲）连接数（最大和每个host）
   MaxTotalConnections: 5000
   MaxConnectionsPerHost: 5000
@@ -71,12 +71,14 @@ ribbon:
   #（▲）超时（配置http才生效，使用RibbonClientHttpRequestFactory）
 
 #（2）Client配置
-#study-springcloud-provider:
-#  ribbon:
-#    eureka:
-#      enabled: true
-#    ConnectTimeout: 5000
-#    ReadTimeout: 5000
+study-springcloud-provider:
+  ribbon:
+    eureka:
+      enabled: true
+    okhttp:
+      enabled: true
+    ConnectTimeout: 5000
+    ReadTimeout: 5000
 #    MaxTotalConnections: 500
 #    MaxConnectionsPerHost: 500
 #    MaxAutoRetries: 1
