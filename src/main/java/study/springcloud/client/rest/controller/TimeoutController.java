@@ -1,5 +1,6 @@
 package study.springcloud.client.rest.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -11,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+@Slf4j
 @RestController
 public class TimeoutController {
+
+    String url = "http://study-springcloud-provider/timeout";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -24,7 +28,7 @@ public class TimeoutController {
         MultiValueMap<String, Object> param = new LinkedMultiValueMap<>();
         param.add("timeout", timeout);
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity(param, headers);
-        String str = restTemplate.postForObject("http://study-springcloud-provider/await", request, String.class);
+        String str = restTemplate.postForObject(url, request, String.class);
         return str;
     }
 }

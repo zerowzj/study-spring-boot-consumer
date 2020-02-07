@@ -1,19 +1,26 @@
 package study.springcloud.client.rest.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
+@Slf4j
 @RestController
 public class LoadBalanceController {
 
-    @Autowired
-    private RestTemplate restTemplate;
+    private String serviceId = "study-springcloud-provider";
 
-    @PostMapping("/getServerInfo")
+    @Autowired
+    private LoadBalancerClient loadBalancerClient;
+
+    @PostMapping("/loadBalancer")
     public String getServerInfo() {
-        String str = restTemplate.postForObject("http://study-springcloud-provider/getServerInfo", null, String.class);
-        return str;
+        ServiceInstance instance = loadBalancerClient.choose(serviceId);
+        log.info("{}", instance);
+        return "咔咔咔咔咔咔扩扩扩扩";
     }
 }

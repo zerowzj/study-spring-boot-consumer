@@ -2,10 +2,11 @@ package study.springcloud.client.rest.support.ribbon;
 
 import com.netflix.client.config.IClientConfig;
 import com.netflix.loadbalancer.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+@Slf4j
 //@Configuration
 //@RibbonClients(value = {
 //        @RibbonClient(name = "study-springcloud-provider", configuration = RibbonCfg.class)
@@ -13,18 +14,18 @@ import org.springframework.context.annotation.Configuration;
 //})
 public class RibbonCfg {
 
-    @Autowired
-    private IClientConfig clientConfig;
-
     @Bean
     public IRule ribbonRule() {
-        return new RandomRule();
+        new RoundRobinRule(); //轮询
+        new RetryRule(); //
+        IRule rule = new RandomRule();
+        return rule;
     }
 
     @Bean
     public IPing ribbonPing() {
-//        return new PingUrl();
-        return new NoOpPing();
+        IPing ping = new NoOpPing();
+        return ping;
     }
 
 //    @Bean
@@ -32,9 +33,9 @@ public class RibbonCfg {
 //        return new ConfigurationBasedServerList();
 //    }
 
-    @Bean
-    public ServerListSubsetFilter serverListFilter() {
-        ServerListSubsetFilter filter = new ServerListSubsetFilter();
-        return filter;
-    }
+//    @Bean
+//    public ServerListSubsetFilter serverListFilter() {
+//        ServerListSubsetFilter filter = new ServerListSubsetFilter();
+//        return filter;
+//    }
 }
