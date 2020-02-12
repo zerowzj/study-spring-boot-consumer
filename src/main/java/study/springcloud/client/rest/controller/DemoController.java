@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/demo")
 public class DemoController {
 
-
     @PostMapping("/exception")
     public String getNextServer(HttpServletRequest request, HttpServletResponse response) {
         try {
