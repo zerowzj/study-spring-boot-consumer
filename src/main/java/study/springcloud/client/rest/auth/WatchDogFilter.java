@@ -22,7 +22,7 @@ public class WatchDogFilter extends OncePerRequestFilter {
         String uri = request.getRequestURI();
         Stopwatch stopwatch = Stopwatch.createStarted();
         try {
-            filterChain.doFilter(request, response);
+            doFilter(request, response, filterChain);
         } finally {
             log.info("[{}] cost time {} ms", uri, stopwatch.elapsed(TimeUnit.MILLISECONDS));
         }
