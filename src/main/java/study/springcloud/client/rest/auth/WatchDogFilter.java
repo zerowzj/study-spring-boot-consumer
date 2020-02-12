@@ -20,7 +20,6 @@ public class WatchDogFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
         String uri = request.getRequestURI();
-        log.info("[{}]", uri);
         Stopwatch stopwatch = Stopwatch.createStarted();
         try {
             filterChain.doFilter(request, response);
