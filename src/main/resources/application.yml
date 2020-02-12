@@ -36,7 +36,9 @@ ribbon:
   #（▲）使用Eureka
   eureka:
     enabled: true
-  #（▲）使用Eurek
+  #（▲）Http客户端
+  restclient:
+    enabled: false
   httpclient:
     enabled: true
   okhttp:
