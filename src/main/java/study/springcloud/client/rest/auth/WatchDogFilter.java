@@ -25,19 +25,15 @@ public class WatchDogFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
         Stopwatch stopwatch = Stopwatch.createStarted();
-        String requestId = obtainRequestId(request);
+        String requestId = request.getHeader(HEADER_KEY_REQUEST_ID);
         MDC.put(KEY_REQUEST_ID, requestId);
 
         String uri = request.getRequestURI();
         try {
-            filterChain.doFilter(request, response);
+            doFilter(request, response, filterChain);
         } finally {
             log.info("[{}] cost time [{} ms]", uri, stopwatch.elapsed(TimeUnit.MILLISECONDS));
             MDC.remove(KEY_REQUEST_ID);
         }
-    }
-
-    private String obtainRequestId(HttpServletRequest request) {
-        return request.getHeader(HEADER_KEY_REQUEST_ID);
     }
 }

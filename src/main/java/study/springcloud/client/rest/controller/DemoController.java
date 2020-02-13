@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import study.springcloud.client.rest.support.utils.Results;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 @Slf4j
@@ -15,18 +13,15 @@ import java.util.Map;
 @RequestMapping("/demo")
 public class DemoController {
 
-    @RequestMapping("/sayHi")
+    @PostMapping("/sayHi")
     public Map<String, Object> sayHi() {
         return Results.ok(null);
     }
 
-    @PostMapping("/exception")
-    public String getNextServer(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            response.sendError(500);
-        } catch (Exception ex) {
-
+    @PostMapping("/throwException")
+    public void throwException() {
+        if (1 == 1) {
+            throw new RuntimeException("");
         }
-        return "";
     }
 }
