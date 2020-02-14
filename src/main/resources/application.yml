@@ -15,9 +15,7 @@ spring:
       #（▲）请求重试
       retry:
         enabled: false
-#==============================
-#（★）Eureka Client
-#==============================
+#
 eureka:
   instance:
     hostname: study-springcloud-client-rest
