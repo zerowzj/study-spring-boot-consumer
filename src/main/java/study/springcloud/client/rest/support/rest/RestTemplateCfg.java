@@ -26,8 +26,4 @@ public class RestTemplateCfg {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate;
     }
-
-    public static void main(String[] args) {
-        log.error("fdasfsa{}",  new RuntimeException("fsadfas"));
-    }
 }
