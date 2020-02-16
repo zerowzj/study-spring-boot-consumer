@@ -1,5 +1,6 @@
 package study.springcloud.client.rest.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -13,6 +14,7 @@ import study.springcloud.client.rest.support.utils.Results;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 @RestController
 @RequestMapping("/retry")
 public class RetryController {
@@ -21,27 +23,39 @@ public class RetryController {
     private RestTemplate restTemplate;
 
     @GetMapping("/timeout_get")
-    public Map<String, Object> timeout_retry_get(@RequestParam Long timeout) {
+    public Map<String, Object> timeout_get(@RequestParam Long timeout) {
         try {
             TimeUnit.MILLISECONDS.sleep(timeout);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         Map<String, Object> data = Results.data();
-        data.put("timeout", timeout);
+        data.put("timeout", String.format("%s ms", timeout));
         return Results.ok(data);
     }
 
-    @GetMapping("/timeout_post")
-    public Map<String, Object> timeout_retry_post(@RequestParam Long timeout) {
+    @PostMapping("/timeout_post")
+    public Map<String, Object> timeout_post(@RequestParam Long timeout) {
         try {
             TimeUnit.MILLISECONDS.sleep(timeout);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         Map<String, Object> data = Results.data();
-        data.put("timeout", timeout);
+        data.put("timeout", String.format("%s ms", timeout));
         return Results.ok(data);
+    }
+
+    @PostMapping("/timeout_idempotent")
+    public Map<String, Object> timeout_idempotent
+            (Long timeout, String orderNo) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(timeout);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        log.info("create order: [{}]", orderNo);
+        return Results.ok();
     }
 
     //    @Retryable(maxAttempts = 6)

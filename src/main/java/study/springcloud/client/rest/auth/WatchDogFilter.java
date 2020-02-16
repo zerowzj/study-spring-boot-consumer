@@ -29,8 +29,6 @@ public class WatchDogFilter extends OncePerRequestFilter {
         MDC.put(KEY_REQUEST_ID, requestId);
 
         String uri = request.getRequestURI();
-        String url = request.getRequestURL().toString();
-        log.info("url={}", url);
         try {
             doFilter(request, response, filterChain);
         } finally {
