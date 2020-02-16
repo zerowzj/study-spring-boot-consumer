@@ -17,22 +17,6 @@ public class DemoController {
 
     @PostMapping("/sayHi")
     public Map<String, Object> sayHi() {
-        return Results.ok(null);
-    }
-
-    @PostMapping("/throwException")
-    public void throwException() {
-        if (1 == 1) {
-            throw new RuntimeException("client exception");
-        }
-    }
-
-    @PostMapping("/timeout")
-    public void timeout(@RequestParam Long timeout) {
-        try {
-            TimeUnit.SECONDS.sleep(timeout);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        return Results.ok();
     }
 }

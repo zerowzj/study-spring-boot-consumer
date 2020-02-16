@@ -4,21 +4,47 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.retry.annotation.Retryable;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import study.springcloud.client.rest.support.utils.Results;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @RestController
+@RequestMapping("/retry")
 public class RetryController {
 
     @Autowired
     private RestTemplate restTemplate;
 
-//    @Retryable(maxAttempts = 6)
+    @GetMapping("/timeout_get")
+    public Map<String, Object> timeout_retry_get(@RequestParam Long timeout) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(timeout);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        Map<String, Object> data = Results.data();
+        data.put("timeout", timeout);
+        return Results.ok(data);
+    }
+
+    @GetMapping("/timeout_post")
+    public Map<String, Object> timeout_retry_post(@RequestParam Long timeout) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(timeout);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        Map<String, Object> data = Results.data();
+        data.put("timeout", timeout);
+        return Results.ok(data);
+    }
+
+    //    @Retryable(maxAttempts = 6)
     @PostMapping("/retry")
     public void retry(@RequestParam int code) {
         HttpHeaders headers = new HttpHeaders();

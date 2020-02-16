@@ -19,6 +19,10 @@ public class Results {
         return build("0000", "成功", data);
     }
 
+    public static Map<String, Object> ok() {
+        return ok(null);
+    }
+
     public static Map<String, Object> error(String code, String desc) {
         return build(code, desc, null);
     }
@@ -33,5 +37,9 @@ public class Results {
         }
         result.put(KEY_DATA, data);
         return result;
+    }
+
+    public static Map<String, Object> data(){
+        return Maps.newHashMap();
     }
 }
