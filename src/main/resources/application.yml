@@ -19,12 +19,26 @@ eureka:
   instance:
     hostname: study-springcloud-client-rest
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    #（▲）是否优先使用ip代替hostname作为实例hostName
     prefer-ip-address: true
+    #（▲）
+    lease-expiration-duration-in-seconds: 90
+    #（▲）
+    lease-renewal-interval-in-seconds: 30
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: @eureka.server.list@
-    #
+    #（▲）
     registry-fetch-interval-seconds: 30
+    cache-refresh-executor-thread-pool-size: 2
+    cache-refresh-executor-exponential-back-off-bound: 10
+    #（▲）
+    heartbeat-executor-thread-pool-size: 2
+    heartbeat-executor-exponential-back-off-bound: 10
+    #（▲）
+    eureka-server-connect-timeout-seconds: 5
+    eureka-server-read-timeout-seconds: 8
+    eureka-server-total-connections: 200
 
