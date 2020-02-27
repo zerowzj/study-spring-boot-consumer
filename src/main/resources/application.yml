@@ -41,4 +41,5 @@ eureka:
     eureka-server-connect-timeout-seconds: 5
     eureka-server-read-timeout-seconds: 8
     eureka-server-total-connections: 200
+    eureka-server-total-connections-per-host: 50
 
