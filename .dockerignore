@@ -1,0 +1,8 @@
+#
+doc
+src
+#
+*.iml
+#
+target
+!target/study-springcloud-client-rest-1.0.jar
