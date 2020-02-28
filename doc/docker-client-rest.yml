@@ -4,14 +4,14 @@ services:
   study-springcloud-client-rest:
     image: study/study-springcloud-client-rest:1
     ports:
-      - "7102:7102"
+      - "7400:7400"
     environment:
       - EUREKA_SERVER_LIST=http://eureka-server1:7101/eureka/,http://eureka-server2:7102/eureka/
     volumes:
       - /xdfapp:/xdfapp
-#    extra_hosts:
-#      - eureka-server1:172.17.0.1
-#      - eureka-server2:172.17.0.1
+    extra_hosts:
+      - eureka-server1:172.17.0.1
+      - eureka-server2:172.17.0.1
     networks:
       - overlay_net
 
