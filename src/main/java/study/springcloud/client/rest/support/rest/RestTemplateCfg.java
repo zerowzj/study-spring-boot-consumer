@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
-import java.time.Duration;
+import java.util.Collections;
 
 @Slf4j
 @Configuration
@@ -24,6 +24,7 @@ public class RestTemplateCfg {
 //                .setReadTimeout(Duration.ofSeconds(7))
 //                .build()
         RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setInterceptors(Collections.singletonList(new RestRequestInterceptor()));
         return restTemplate;
     }
 }

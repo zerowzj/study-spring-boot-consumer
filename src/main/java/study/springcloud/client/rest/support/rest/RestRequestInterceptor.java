@@ -10,7 +10,7 @@ import org.springframework.http.client.ClientHttpResponse;
 import java.io.IOException;
 
 @Slf4j
-public class HeaderInterceptor implements ClientHttpRequestInterceptor {
+public class RestRequestInterceptor implements ClientHttpRequestInterceptor {
 
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body,
