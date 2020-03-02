@@ -1,16 +1,14 @@
 package study.springcloud.client.rest.controller;
 
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -21,40 +19,40 @@ public class RestTemplateController {
     private RestTemplate restTemplate;
 
     @PostMapping("/requestFactory")
-    public String demo() {
+    public Map<String, Object> requestFactory() {
+        Map<String, Object> data = Maps.newHashMap();
         String name = restTemplate.getRequestFactory().getClass().getName();
-        log.info("==========");
-        log.info("{}", restTemplate.getRequestFactory().getClass().getSimpleName());
-        log.info("==========");
-        return name;
+        String simpleName = restTemplate.getRequestFactory().getClass().getSimpleName();
+        data.put("name", name);
+        data.put("simpleName", simpleName);
+        return data;
     }
 
-    @PostMapping("/postForEntity")
-    public String postForEntity() {
-        HttpHeaders headers = new HttpHeaders();
-        //
-        Object request = null;
-        Class<String> responseType = String.class;
-        Object[] uriVariables = null;
-        //
-        ResponseEntity<String> response1 = restTemplate.postForEntity(url, request, responseType);
-        ResponseEntity<String> response2 = restTemplate.postForEntity(url, request, responseType, uriVariables);
-        return null;
-    }
+//    @PostMapping("/postForEntity")
+//    public String postForEntity() {
+//        HttpHeaders headers = new HttpHeaders();
+//        //
+//        Object request = null;
+//        Class<String> responseType = String.class;
+//        Object[] uriVariables = null;
+//        //
+//        ResponseEntity<String> response1 = restTemplate.postForEntity(url, request, responseType);
+//        ResponseEntity<String> response2 = restTemplate.postForEntity(url, request, responseType, uriVariables);
+//        return null;
+//    }
 
-    @PostMapping("/postForObject")
-    public String postForObject() {
-        //参数
-
-        Class<String> responseType = String.class;
-        Object[] uriVariables = null;
-        //
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity(param, headers);
-        //
-        String response1 = restTemplate.postForObject(url, request, responseType);
-        String response2 = restTemplate.postForObject(url, request, responseType, uriVariables);
-        return null;
-    }
+//    @PostMapping("/postForObject")
+//    public String postForObject() {
+//        //参数
+//
+//        Class<String> responseType = String.class;
+//        Object[] uriVariables = null;
+//        //
+//        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity(param, headers);
+//        //
+//        String response1 = restTemplate.postForObject(url, request, responseType);
+//        return null;
+//    }
 
 //    @PostMapping("/getForEntity")
 //    public String getForEntity() {
