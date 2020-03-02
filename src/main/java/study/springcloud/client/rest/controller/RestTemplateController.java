@@ -2,9 +2,11 @@ package study.springcloud.client.rest.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,35 +29,35 @@ public class RestTemplateController {
         return name;
     }
 
-//    @PostMapping("/postForEntity")
-//    public String postForEntity() {
-//        HttpHeaders headers = new HttpHeaders();
-//        //
-//        Object request = null;
-//        Class<String> responseType = String.class;
-//        Object[] uriVariables = null;
-//        //
-//        ResponseEntity<String> response1 = restTemplate.postForEntity(url, request, responseType);
-//        ResponseEntity<String> response2 = restTemplate.postForEntity(url, request, responseType, uriVariables);
-//        return null;
-//    }
+    @PostMapping("/postForEntity")
+    public String postForEntity() {
+        HttpHeaders headers = new HttpHeaders();
+        //
+        Object request = null;
+        Class<String> responseType = String.class;
+        Object[] uriVariables = null;
+        //
+        ResponseEntity<String> response1 = restTemplate.postForEntity(url, request, responseType);
+        ResponseEntity<String> response2 = restTemplate.postForEntity(url, request, responseType, uriVariables);
+        return null;
+    }
 
-//    @PostMapping("/postForObject")
-//    public String postForObject() {
-//        //头部
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
-//        //参数
-//        Object request = null;
-//        Class<String> responseType = String.class;
-//        Object[] uriVariables = null;
-//        //
-//        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity(param, headers);
-//        //
-//        String response1 = restTemplate.postForObject(url, request, responseType);
-//        String response2 = restTemplate.postForObject(url, request, responseType, uriVariables);
-//        return null;
-//    }
+    @PostMapping("/postForObject")
+    public String postForObject() {
+        //头部
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        //参数
+        Object request = null;
+        Class<String> responseType = String.class;
+        Object[] uriVariables = null;
+        //
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity(param, headers);
+        //
+        String response1 = restTemplate.postForObject(url, request, responseType);
+        String response2 = restTemplate.postForObject(url, request, responseType, uriVariables);
+        return null;
+    }
 
 //    @PostMapping("/getForEntity")
 //    public String getForEntity() {
