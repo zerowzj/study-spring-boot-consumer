@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 //})
 public class RibbonCfg {
 
-
     @Bean
     public IRule ribbonRule() {
         new RoundRobinRule(); //轮询
