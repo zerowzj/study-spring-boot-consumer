@@ -36,20 +36,20 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: @eureka.server.list@
-    #--------------------
+    #<<<<<<<<<<<<<<<<<<<<<
     #（▲）服务缓存
-    #--------------------
+    #<<<<<<<<<<<<<<<<<<<<<
     registry-fetch-interval-seconds: 30
     cache-refresh-executor-thread-pool-size: 2
     cache-refresh-executor-exponential-back-off-bound: 10
-    #--------------------
+    #<<<<<<<<<<<<<<<<<<<<<
     #（▲）心跳
-    #--------------------
+    #<<<<<<<<<<<<<<<<<<<<<
     heartbeat-executor-thread-pool-size: 2
     heartbeat-executor-exponential-back-off-bound: 10
-    #--------------------
+    #<<<<<<<<<<<<<<<<<<<<<
     #（▲）
-    #--------------------
+    #<<<<<<<<<<<<<<<<<<<<<
     eureka-server-connect-timeout-seconds: 5
     eureka-server-read-timeout-seconds: 8
     eureka-server-total-connections: 200
