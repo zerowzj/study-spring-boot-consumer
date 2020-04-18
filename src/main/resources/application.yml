@@ -7,7 +7,7 @@ logging:
 #
 spring:
   application:
-    name: study-springcloud-client-rest
+    name: study-springcloud-consumer-rest
   main:
     web-application-type: servlet
   profiles:
