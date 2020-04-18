@@ -35,25 +35,43 @@ eureka:
   #（★）客户端配置
   #====================
   client:
-    register-with-eureka: true
-    fetch-registry: true
+    #server通信zone和url地址
     service-url:
       defaultZone: @eureka.server.list@
+    #是否向server注册成服务
+    register-with-eureka: true
+    #是否获取server注册服务
+    fetch-registry: true
     #--------------------
-    #（▲）服务缓存
+    #（▲）缓存
     #--------------------
+    #注册服务获取时间间隔
     registry-fetch-interval-seconds: 30
+    #缓存刷新执行器线程池大小
     cache-refresh-executor-thread-pool-size: 2
+    #执行程序指数回退刷新的相关属性，是重试延迟的最大倍数值，默认为10
     cache-refresh-executor-exponential-back-off-bound: 10
     #--------------------
     #（▲）心跳
     #--------------------
+    #心跳执行器线程池大小
     heartbeat-executor-thread-pool-size: 2
+    #心跳执行程序回退相关的属性，是重试延迟的最大倍数值，默认为10
     heartbeat-executor-exponential-back-off-bound: 10
     #--------------------
-    #（▲）
+    #（▲）连接
     #--------------------
+    #client连接server后的空闲等待时间，默认为30 秒
+    eureka-connection-idle-timeout-seconds: 30
+    #连接超时时间，client连接server的连接超时时间，默认为5秒
     eureka-server-connect-timeout-seconds: 5
+    #读取超时时间，client对服务端的读超时时长
     eureka-server-read-timeout-seconds: 8
+    #总连接数，client连接all server的总连接数，默认200
     eureka-server-total-connections: 200
+    #每个主机的总连接数，client连接server的单机连接数量，默认50
     eureka-server-total-connections-per-host: 50
+    #询问eureka服务url信息变化的频率，默认为300秒
+    eureka-service-url-poll-interval-seconds: 300
+    #间隔多长时间再次复制实例信息到server，默认为30秒
+    eureka.client.instance-info-replication-interval-seconds: 30
