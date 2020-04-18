@@ -6,7 +6,7 @@ import org.springframework.retry.annotation.EnableRetry;
 
 @EnableRetry
 @EnableEurekaClient
-@SpringBootApplication(scanBasePackages = "study.springcloud.client.rest")
+@SpringBootApplication(scanBasePackages = "study.springcloud.consumer.rest")
 public class SpringBootCfg {
 }
 
