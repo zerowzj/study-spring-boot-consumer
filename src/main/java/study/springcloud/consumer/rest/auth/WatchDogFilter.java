@@ -1,4 +1,4 @@
-package study.springcloud.client.rest.auth;
+package study.springcloud.consumer.rest.auth;
 
 import com.google.common.base.Stopwatch;
 import lombok.extern.slf4j.Slf4j;

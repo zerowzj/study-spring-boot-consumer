@@ -1,4 +1,4 @@
-package study.springcloud.client.rest.support.rest;
+package study.springcloud.consumer.rest.support.rest;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;

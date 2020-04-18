@@ -1,4 +1,4 @@
-package study.springcloud.client.rest.controller;
+package study.springcloud.consumer.rest.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import study.springcloud.client.rest.support.utils.Results;
+import study.springcloud.consumer.rest.support.utils.Results;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;

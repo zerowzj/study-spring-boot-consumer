@@ -1,7 +1,7 @@
-package study.springcloud.client.rest;
+package study.springcloud.consumer.rest;
 
 import org.springframework.boot.SpringApplication;
-import study.springcloud.client.rest.support.SpringBootCfg;
+import study.springcloud.consumer.rest.support.SpringBootCfg;
 
 public class Startup {
 

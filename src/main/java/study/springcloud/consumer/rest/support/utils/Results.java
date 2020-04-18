@@ -1,4 +1,4 @@
-package study.springcloud.client.rest.support.utils;
+package study.springcloud.consumer.rest.support.utils;
 
 import com.google.common.collect.Maps;
 import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;

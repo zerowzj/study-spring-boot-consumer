@@ -1,4 +1,4 @@
-package study.springcloud.client.rest.controller;
+package study.springcloud.consumer.rest.controller;
 
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;

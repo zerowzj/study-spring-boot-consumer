@@ -1,4 +1,4 @@
-package study.springcloud.client.rest.controller;
+package study.springcloud.consumer.rest.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
