@@ -47,7 +47,8 @@ eureka:
     #--------------------
     #心跳执行器线程池大小
     heartbeat-executor-thread-pool-size: 2
-    #心跳执行程序回退相关的属性，是重试延迟的最大倍数值，默认为10
+    #心跳超时重试延迟时间的最大乘数值，默认10
+    #leaseRenewalIntervalInSeconds * heartbeatExecutorExponentialBackOffBound
     heartbeat-executor-exponential-back-off-bound: 10
     #--------------------
     #（▲）获取服务
@@ -58,9 +59,9 @@ eureka:
     disable-delta: true
     #缓存刷新执行器线程池大小
     cache-refresh-executor-thread-pool-size: 2
-    #执行程序指数回退刷新的相关属性，是重试延迟的最大倍数值，默认为10
+    #缓存刷新超时重试延迟时间的最大乘数值，默认10
+    #registryFetchIntervalSeconds * cacheRefreshExecutorExponentialBackOffBound
     cache-refresh-executor-exponential-back-off-bound: 10
-
     #--------------------
     #（▲）连接
     #--------------------
