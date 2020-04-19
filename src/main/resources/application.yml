@@ -20,7 +20,7 @@ eureka:
   #（★）实例配置
   #====================
   instance:
-    hostname: study-springcloud-client-rest
+    hostname: study-springcloud-consumer-rest
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
     #（▲）是否优先使用ip代替hostname作为实例hostName
     prefer-ip-address: true
@@ -35,7 +35,7 @@ eureka:
   #（★）客户端配置
   #====================
   client:
-    #server通信zone和url地址
+    #server通信zone和url地址`
     service-url:
       defaultZone: @eureka.server.list@
     #是否向server注册成服务
@@ -43,21 +43,24 @@ eureka:
     #是否获取server注册服务
     fetch-registry: true
     #--------------------
-    #（▲）缓存
-    #--------------------
-    #注册服务获取时间间隔
-    registry-fetch-interval-seconds: 30
-    #缓存刷新执行器线程池大小
-    cache-refresh-executor-thread-pool-size: 2
-    #执行程序指数回退刷新的相关属性，是重试延迟的最大倍数值，默认为10
-    cache-refresh-executor-exponential-back-off-bound: 10
-    #--------------------
-    #（▲）心跳
+    #（▲）注册服务
     #--------------------
     #心跳执行器线程池大小
     heartbeat-executor-thread-pool-size: 2
     #心跳执行程序回退相关的属性，是重试延迟的最大倍数值，默认为10
     heartbeat-executor-exponential-back-off-bound: 10
+    #--------------------
+    #（▲）获取服务
+    #--------------------
+    #服务注册信息获取时间间隔
+    registry-fetch-interval-seconds: 30
+    #是否禁用增量获取
+    disable-delta: true
+    #缓存刷新执行器线程池大小
+    cache-refresh-executor-thread-pool-size: 2
+    #执行程序指数回退刷新的相关属性，是重试延迟的最大倍数值，默认为10
+    cache-refresh-executor-exponential-back-off-bound: 10
+
     #--------------------
     #（▲）连接
     #--------------------
@@ -75,3 +78,4 @@ eureka:
     eureka-service-url-poll-interval-seconds: 300
     #间隔多长时间再次复制实例信息到server，默认为30秒
     eureka.client.instance-info-replication-interval-seconds: 30
+
