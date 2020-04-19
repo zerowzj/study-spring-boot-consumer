@@ -1,0 +1,34 @@
+#
+spring:
+  cloud:
+    loadbalancer:
+      #（▲）请求重试
+      retry:
+        enabled: false
+#******************************
+# Ribbon
+#******************************
+study-springcloud-provider:
+  ribbon:
+    eureka:
+      enabled: true
+    okhttp:
+      enabled: true
+    ConnectTimeout: 5000
+    ReadTimeout: 5000
+    MaxTotalConnections: 500
+    MaxConnectionsPerHost: 500
+    MaxAutoRetries: 1
+    MaxAutoRetriesNextServer: 2
+    OkToRetryOnAllOperations: true
+    RetryableStatusCodes: 404,500,502
+    #负载均衡器操作接口（ILoadBalancer）
+    NFLoadBalancerClassName: com.netflix.loadbalancer.ZoneAwareLoadBalancer
+    #负载均衡算法（IRule）
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    #服务可用性检查（IPing）
+    NFLoadBalancerPingClassName: com.netflix.loadbalancer.PingUrl
+    #服务实例清单维护机制，服务列表获取（ServerList）
+    #    NIWSServerListClassName:
+    #服务清单过滤机制，服务列表的过滤（ServerListFilter）
+    NIWSServerListFilterClassName: com.netflix.loadbalancer.ServerListSubsetFilter
