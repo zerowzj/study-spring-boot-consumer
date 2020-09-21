@@ -13,15 +13,16 @@ spring:
   profiles:
     active: ribbon
 #    active: ribbon-client
-#******************************
+#####################
 # Eureka Client
-#******************************
+#####################
 eureka:
   #====================
-  #（★）实例配置
+  #（1）实例配置
   #====================
   instance:
     hostname: study-springcloud-consumer-rest
+    #注册的实例id
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
     #该服务实例的IP地址
     #ip-address: 127.0.0.1
@@ -34,9 +35,8 @@ eureka:
     lease-renewal-interval-in-seconds: 30
     #续约过期时长
     lease-expiration-duration-in-seconds: 90
-
   #====================
-  #（★）客户端配置
+  #（2）客户端配置
   #====================
   client:
     #server通信zone和url地址`
