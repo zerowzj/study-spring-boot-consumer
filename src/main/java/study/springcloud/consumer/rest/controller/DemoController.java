@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import study.springcloud.consumer.rest.support.result.Results;
+import study.springcloud.consumer.rest.support.Results;
 
 import java.util.Map;
 

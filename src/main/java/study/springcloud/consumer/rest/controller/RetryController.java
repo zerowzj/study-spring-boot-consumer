@@ -9,7 +9,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import study.springcloud.consumer.rest.support.result.Results;
+import study.springcloud.consumer.rest.support.Results;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
