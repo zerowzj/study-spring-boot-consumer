@@ -10,6 +10,7 @@ spring:
     name: study-springcloud-consumer-rest
   main:
     web-application-type: servlet
+    banner-mode: 'off'
   profiles:
     active: ribbon
 #    active: ribbon-client
