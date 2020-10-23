@@ -12,4 +12,3 @@ import org.springframework.retry.annotation.EnableRetry;
 @SpringBootApplication(scanBasePackages = "study.springcloud.consumer.rest")
 public class SpringBootCfg {
 }
-
