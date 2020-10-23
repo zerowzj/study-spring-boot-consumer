@@ -12,6 +12,9 @@ public class Results {
 
     private static final String KEY_DATA = "data";
 
+    public static Map<String, Object> ok() {
+        return ok(null);
+    }
 
     public static Map<String, Object> ok(Map<String, Object> data) {
         return build("0000", "成功", data);
