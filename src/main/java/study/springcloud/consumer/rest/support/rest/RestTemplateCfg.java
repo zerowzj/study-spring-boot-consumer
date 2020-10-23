@@ -15,11 +15,12 @@ import java.util.Collections;
 @Configuration
 public class RestTemplateCfg {
 
-        @Bean
+    @Bean
     @LoadBalanced
     public RestTemplate restTemplate() {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setInterceptors(Collections.singletonList(new RestRequestInterceptor()));
+
         ClientHttpRequestFactory requestFactory = restTemplate.getRequestFactory();
         log.info(">>>>>> {}", requestFactory.getClass().getSimpleName());
         return restTemplate;
