@@ -15,60 +15,14 @@ spring:
 #    active: ribbon-client
 #
 eureka:
-  #（1）实例配置
   instance:
     hostname: study-springcloud-consumer-rest
-    #注册的实例id
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    #该服务实例的IP地址
-    #ip-address: 127.0.0.1
-    #（▲）是否优先使用服务实例ip代替hostname作为实例hostName
     prefer-ip-address: true
-    #（▲）续约
-    #续约更新间隔
-    lease-renewal-interval-in-seconds: 30
-    #续约过期时长
-    lease-expiration-duration-in-seconds: 90
-  #（2）客户端配置
   client:
-    #server通信zone和url地址
     service-url:
       defaultZone: @eureka.server.list@
-    #（▲）服务注册和发现！！！
-    #
     enabled: true
-    #是否向 server 注册成服务
     register-with-eureka: true
-    #是否获取 server 注册服务表
     fetch-registry: true
-    #服务注册信息获取时间间隔
     registry-fetch-interval-seconds: 30
-    #（▲）续约
-    #心跳执行器线程池大小，默认2
-    heartbeat-executor-thread-pool-size: 2
-    #心跳超时重试延迟时间的最大乘数值，默认10
-    #leaseRenewalIntervalInSeconds * heartbeatExecutorExponentialBackOffBound
-    heartbeat-executor-exponential-back-off-bound: 10
-    #（▲）获取服务
-    #是否禁用增量获取
-    disable-delta: true
-    #缓存刷新执行器线程池大小
-    cache-refresh-executor-thread-pool-size: 2
-    #缓存刷新超时重试延迟时间的最大乘数值，默认10
-    #registryFetchIntervalSeconds * cacheRefreshExecutorExponentialBackOffBound
-    cache-refresh-executor-exponential-back-off-bound: 10
-    #（▲）连接
-    #client连接server后的空闲等待时间，默认为30 秒
-    eureka-connection-idle-timeout-seconds: 30
-    #连接超时时间，client连接server的连接超时时间，默认为5秒
-    eureka-server-connect-timeout-seconds: 5
-    #读取超时时间，client对服务端的读超时时长
-    eureka-server-read-timeout-seconds: 8
-    #总连接数，client连接all server的总连接数，默认200
-    eureka-server-total-connections: 200
-    #每个主机的总连接数，client连接server的单机连接数量，默认50
-    eureka-server-total-connections-per-host: 50
-    #询问eureka服务url信息变化的频率，默认为300秒
-    eureka-service-url-poll-interval-seconds: 300
-    #间隔多长时间再次复制实例信息到server，默认为30秒
-    eureka.client.instance-info-replication-interval-seconds: 30
