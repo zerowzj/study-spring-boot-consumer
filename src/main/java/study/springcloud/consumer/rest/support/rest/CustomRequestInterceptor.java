@@ -11,14 +11,20 @@ import org.springframework.http.client.ClientHttpResponse;
 import java.io.IOException;
 
 @Slf4j
-public class RestRequestInterceptor implements ClientHttpRequestInterceptor {
+public class CustomRequestInterceptor implements ClientHttpRequestInterceptor {
 
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body,
                                         ClientHttpRequestExecution execution) throws IOException {
         HttpHeaders headers = request.getHeaders();
-        headers.add("", "");
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
-        return execution.execute(request, body);
+
+        ClientHttpResponse response;
+        try {
+            response = execution.execute(request, body);
+        } catch (Exception ex) {
+            throw new RuntimeException("", ex);
+        }
+        return response;
     }
 }

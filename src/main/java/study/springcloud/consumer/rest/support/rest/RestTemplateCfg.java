@@ -19,7 +19,7 @@ public class RestTemplateCfg {
     @LoadBalanced  //Ribbon负载均衡
     public RestTemplate restTemplate() {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.setInterceptors(Collections.singletonList(new RestRequestInterceptor()));
+        restTemplate.setInterceptors(Collections.singletonList(new CustomRequestInterceptor()));
 
         ClientHttpRequestFactory requestFactory = restTemplate.getRequestFactory();
         log.info(">>>>>> {}", requestFactory.getClass().getSimpleName());
@@ -32,7 +32,7 @@ public class RestTemplateCfg {
         RestTemplate restTemplate = builder.setConnectTimeout(Duration.ofSeconds(7))
                 .setReadTimeout(Duration.ofSeconds(7))
                 .build();
-        restTemplate.setInterceptors(Collections.singletonList(new RestRequestInterceptor()));
+        restTemplate.setInterceptors(Collections.singletonList(new CustomRequestInterceptor()));
 
         ClientHttpRequestFactory requestFactory = restTemplate.getRequestFactory();
         log.info(">>>>>> {}", requestFactory.getClass().getSimpleName());
