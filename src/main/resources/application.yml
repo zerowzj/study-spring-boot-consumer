@@ -18,9 +18,9 @@ spring:
 eureka:
   instance:
     hostname: study-springcloud-consumer-rest
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    prefer-ip-address: true
     #ip-address:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     service-url:
       defaultZone: @eureka.server.list@

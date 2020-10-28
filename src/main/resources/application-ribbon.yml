@@ -11,9 +11,9 @@ ribbon:
     enabled: true
   #（▲）http客户端
   restclient:
-    enabled: false
-  okhttp:
     enabled: true
+  okhttp:
+    enabled: false
   #（▲）超时
   ConnectTimeout: 3000
   ReadTimeout: 3000
