@@ -16,7 +16,7 @@ import java.util.Collections;
 public class RestTemplateCfg {
 
     @Bean
-//    @LoadBalanced  //Ribbon负载均衡
+    @LoadBalanced  //Ribbon负载均衡
     public RestTemplate restTemplate() {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setInterceptors(Collections.singletonList(new CustomRequestInterceptor()));
