@@ -40,10 +40,9 @@ public class RestTemplateController {
     @RequestMapping("/sayBye")
     public Map<String, Object> sayBye() {
         ServiceInstance serviceInstance = loadBalancerClient.choose("study-springcloud-provider");
-        StringBuffer sb = new StringBuffer("http://")
-                .append(serviceInstance.getHost())
-                .append(":")
-                .append(serviceInstance.getPort()).append("/greeting/sayBye");
+        String host = serviceInstance.getHost();
+        int port = serviceInstance.getPort();
+        StringBuffer sb = new StringBuffer("http://").append(host).append(":").append(port).append("/greeting/sayBye");
         String body = restTemplate.getForObject(sb.toString(), String.class);
         log.info(">>>>>> {}", body);
         return Results.ok();
