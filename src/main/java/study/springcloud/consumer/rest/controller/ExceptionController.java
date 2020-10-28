@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/exception")
+@RequestMapping("/ex")
 public class ExceptionController {
 
-    @PostMapping("/throw_exception")
-    public void throw_exception() {
+    @PostMapping("/throw_ex")
+    public void throw_ex() {
         if (1 == 1) {
             throw new RuntimeException("Rest Client Exception");
         }

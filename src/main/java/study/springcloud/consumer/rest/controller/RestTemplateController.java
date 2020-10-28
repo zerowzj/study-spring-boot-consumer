@@ -30,6 +30,9 @@ public class RestTemplateController {
         return Results.ok(data);
     }
 
+    /**
+     * 1.使用注解 @LoadBalanced 时，传给 RestTemplate 的url为服务名
+     */
     @RequestMapping("/sayHi")
     public Map<String, Object> sayHi() {
         String body = restTemplate.getForObject("http://study-springcloud-provider/greeting/sayHi", String.class);
@@ -37,6 +40,9 @@ public class RestTemplateController {
         return Results.ok();
     }
 
+    /**
+     * 1.不使用注解 @LoadBalanced 时，手动获取服务实例，再获取 host+port
+     */
     @RequestMapping("/sayBye")
     public Map<String, Object> sayBye() {
         ServiceInstance serviceInstance = loadBalancerClient.choose("study-springcloud-provider");
