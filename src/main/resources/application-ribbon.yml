@@ -7,21 +7,15 @@ spring:
         enabled: false
 #
 ribbon:
-  #（▲）eureka
   eureka:
     enabled: true
   #（▲）http客户端
   restclient:
     enabled: false
-#  http:
-#    client:
-#      enabled: false
   okhttp:
     enabled: true
   #（▲）超时
-  #连接超时ms
   ConnectTimeout: 3000
-  #读取超时ms
   ReadTimeout: 3000
   #（▲）连接
   #最大连接数

@@ -1,6 +1,6 @@
 #
 server:
-  port: 7300
+  port: 7400
 #
 logging:
   config: classpath:logback-spring.xml
@@ -20,10 +20,10 @@ eureka:
     hostname: study-springcloud-consumer-rest
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
     prefer-ip-address: true
+    #ip-address:
   client:
     service-url:
       defaultZone: @eureka.server.list@
     enabled: true
     register-with-eureka: true
     fetch-registry: true
-    registry-fetch-interval-seconds: 30
