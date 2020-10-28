@@ -114,6 +114,12 @@
             </activation>
         </profile>
         <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+            </properties>
+        </profile>
+        <profile>
             <id>docker</id>
             <properties>
                 <env>docker</env>
