@@ -4,16 +4,18 @@ spring:
     loadbalancer:
       #（▲）重试
       retry:
-        enabled: true
+        enabled: false
 #
 ribbon:
+  #（▲）eureka！！！
   eureka:
     enabled: true
+
   #（▲）http客户端
-  restclient:
-    enabled: false
-  okhttp:
-    enabled: true
+#  restclient:
+#    enabled: false
+#  okhttp:
+#    enabled: true
   #（▲）超时
   ConnectTimeout: 3000
   ReadTimeout: 3000
@@ -41,5 +43,5 @@ ribbon:
     #这样一来如果创建时间速度较慢，同时设置的超时时间又比较短的话，第一次请求很容易超时
     enabled: true
     #指定需要饥饿加载的服务，逗号分隔
-    clients: study-springcloud-provider
+    #clients: study-springcloud-provider
   #（▲）超时（配置http才生效，使用RibbonClientHttpRequestFactory）

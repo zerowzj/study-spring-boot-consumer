@@ -24,7 +24,7 @@ public class WatchDogFilter extends OncePerRequestFilter {
         try {
             filterChain.doFilter(request, response);
         } finally {
-            log.info("[{}] cost time [{} ms]", uri, stopwatch.elapsed(TimeUnit.MILLISECONDS));
+            log.info(">>>>>> [{}] cost time [{} ms]", uri, stopwatch.elapsed(TimeUnit.MILLISECONDS));
         }
     }
 }
