@@ -13,7 +13,6 @@ spring:
     banner-mode: 'off'
   profiles:
     active: ribbon, @env@
-#    active: ribbon-client
 #
 eureka:
   instance:
