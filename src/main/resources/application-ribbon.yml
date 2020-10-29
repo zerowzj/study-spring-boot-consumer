@@ -1,10 +1,9 @@
 #
-#spring:
-#  cloud:
-#    loadbalancer:
-#      #（▲）重试
-#      retry:
-#        enabled: false
+spring:
+  cloud:
+    loadbalancer:
+      #（▲）重试
+      retry: false
 #
 ribbon:
   eureka:
