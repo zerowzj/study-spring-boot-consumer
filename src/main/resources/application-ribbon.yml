@@ -4,7 +4,7 @@ spring:
     loadbalancer:
       #（▲）重试
       retry:
-        enabled: false
+        enabled: true
 #
 ribbon:
   eureka:
