@@ -3,7 +3,8 @@ spring:
   cloud:
     loadbalancer:
       #（▲）重试
-      retry: false
+      retry:
+        enabled: false
 #
 ribbon:
   eureka:

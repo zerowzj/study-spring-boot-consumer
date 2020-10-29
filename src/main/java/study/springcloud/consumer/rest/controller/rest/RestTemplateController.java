@@ -1,6 +1,5 @@
-package study.springcloud.consumer.rest.controller;
+package study.springcloud.consumer.rest.controller.rest;
 
-import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -21,14 +20,6 @@ public class RestTemplateController {
     private RestTemplate restTemplate;
     @Autowired
     private LoadBalancerClient loadBalancerClient;
-
-    @RequestMapping("/requestFactory")
-    public Map<String, Object> requestFactory() {
-        Map<String, Object> data = Maps.newHashMap();
-        String name = restTemplate.getRequestFactory().getClass().getName();
-        data.put("name", name);
-        return Results.ok(data);
-    }
 
     /**
      * 1.使用注解 @LoadBalanced 时，传给 RestTemplate 的url为服务名

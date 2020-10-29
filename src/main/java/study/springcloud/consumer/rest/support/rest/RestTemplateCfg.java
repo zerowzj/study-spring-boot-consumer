@@ -16,8 +16,8 @@ public class RestTemplateCfg {
     @Bean
     @LoadBalanced
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        RestTemplate restTemplate = builder.setConnectTimeout(Duration.ofSeconds(7))
-                .setReadTimeout(Duration.ofSeconds(7))
+        RestTemplate restTemplate = builder.setConnectTimeout(Duration.ofSeconds(5))
+                .setReadTimeout(Duration.ofSeconds(5))
                 .build();
         return restTemplate;
     }

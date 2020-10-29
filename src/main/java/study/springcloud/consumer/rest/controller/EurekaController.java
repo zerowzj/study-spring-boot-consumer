@@ -21,8 +21,6 @@ public class EurekaController {
 
     @Autowired
     private EurekaClient eurekaClient;
-    @Autowired
-    private LoadBalancerClient loadBalancerClient;
 
     @PostMapping("/getNextServer")
     public InstanceInfo getNextServer() {
