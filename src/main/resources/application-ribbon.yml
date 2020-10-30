@@ -30,8 +30,8 @@ ribbon:
   #  #每个主机的最大连接数
   #  MaxConnectionsPerHost: 5000
   #（▲）超时
-  ConnectTimeout: 5
-  ReadTimeout: 5
+  ConnectTimeout: 5000
+  ReadTimeout: 5000
 #  #（▲）重试
 #  #是否所有操作都进行重试：设置为true时，会对所有的请求进行重试；若为false，只会对get请求进行重试
 #  #默认情况下，get方式请求无论是连接异常还是读取异常，都会进行重试；非get方式请求，只有连接异常时才会进行重试
