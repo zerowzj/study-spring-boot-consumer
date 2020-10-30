@@ -19,7 +19,6 @@ public class LoadBalanceController {
     @RequestMapping("/getServerInfo")
     public Map<String, Object> getServerInfo() {
         Map<String, Object> data = restTemplate.getForObject("http://study-springcloud-provider/getServerInfo", Map.class);
-        log.info(">>>>>> {}", data);
-        return Results.ok();
+        return Results.ok(data);
     }
 }

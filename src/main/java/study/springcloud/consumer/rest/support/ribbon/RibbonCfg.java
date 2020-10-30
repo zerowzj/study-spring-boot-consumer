@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Slf4j
-//@Configuration
+@Configuration
 //@RibbonClient(name = "study-springcloud-provider", configuration = RibbonCfg.class)
 public class RibbonCfg {
 
@@ -20,7 +20,7 @@ public class RibbonCfg {
     public IRule ribbonRule() {
         new RoundRobinRule(); //轮询
         new RetryRule(); //
-        IRule rule = new RandomRule();
+        IRule rule = new RoundRobinRule();
         return rule;
     }
 
