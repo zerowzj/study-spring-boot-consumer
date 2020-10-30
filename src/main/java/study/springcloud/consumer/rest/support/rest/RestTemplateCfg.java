@@ -18,8 +18,8 @@ public class RestTemplateCfg {
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         //此处可配置全局超时
         RestTemplate restTemplate = builder
-                .setConnectTimeout(Duration.ofSeconds(6))
-                .setReadTimeout(Duration.ofSeconds(6))
+                //.setConnectTimeout(Duration.ofSeconds(6))
+                //.setReadTimeout(Duration.ofSeconds(6))
                 .build();
         return restTemplate;
     }

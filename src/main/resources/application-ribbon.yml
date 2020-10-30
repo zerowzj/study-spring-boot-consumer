@@ -4,7 +4,7 @@ spring:
     loadbalancer:
       #（▲）重试
       retry:
-        enabled: false
+        enabled: true
 #（★）全局配置
 ribbon:
   #（▲）eureka！！！
@@ -45,12 +45,12 @@ ribbon:
 #  RetryableStatusCodes: 404,500,502
 
 #（★）特殊配置
-study-springcloud-provider:
-  ribbon:
-    eureka:
-      enabled: true
-  ConnectTimeout: 3000
-  ReadTimeout: 3000
-  OkToRetryOnAllOperations: true
-  MaxAutoRetries: 1
-  MaxAutoRetriesNextServer: 1
+#study-springcloud-provider:
+#  ribbon:
+#    eureka:
+#      enabled: true
+#  ConnectTimeout: 3000
+#  ReadTimeout: 3000
+#  OkToRetryOnAllOperations: true
+#  MaxAutoRetries: 1
+#  MaxAutoRetriesNextServer: 1
