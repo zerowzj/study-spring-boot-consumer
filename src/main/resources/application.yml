@@ -16,7 +16,7 @@ spring:
 #
 eureka:
   instance:
-    hostname: study-springcloud-consumer-rest
+    hostname: ${spring.application.name}
     #ip-address:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
