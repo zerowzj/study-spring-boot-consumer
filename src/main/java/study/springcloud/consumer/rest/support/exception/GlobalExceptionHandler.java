@@ -13,7 +13,9 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Throwable.class)
     public Map<String, Object> resolveException(Exception ex) {
-        log.info("======> GlobalExceptionHandler");
+        log.info(">>>>>>");
+        log.info(">>>>>> GlobalExceptionHandler");
+        log.info(">>>>>>");
         Map<String, Object> data = Maps.newHashMap();
         data.put("code", "9999");
         data.put("desc", ex.getMessage());
