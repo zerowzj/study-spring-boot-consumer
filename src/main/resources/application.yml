@@ -13,11 +13,6 @@ spring:
     banner-mode: 'off'
   profiles:
     active: ribbon, @env@
-  cloud:
-    loadbalancer:
-      #（▲）重试
-      retry:
-        enabled: false
 #
 eureka:
   instance:

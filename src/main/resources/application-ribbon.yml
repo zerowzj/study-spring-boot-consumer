@@ -1,4 +1,11 @@
 #
+spring:
+  cloud:
+    loadbalancer:
+      #（▲）重试
+      retry:
+        enabled: false
+#
 ribbon:
   #（▲）eureka！！！
   eureka:
