@@ -15,7 +15,7 @@ public class RestTemplateCfg {
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         //此处可配置全局超时
-        RestTemplate restTemplate = new RestTemplate();
+        RestTemplate restTemplate = builder.build();
         return restTemplate;
     }
 }
