@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.Duration;
+
 @Slf4j
 @Configuration
 public class RestTemplateCfg {
@@ -15,7 +17,10 @@ public class RestTemplateCfg {
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         //此处可配置全局超时
-        RestTemplate restTemplate = builder.build();
+        RestTemplate restTemplate = builder
+                .setConnectTimeout(Duration.ofSeconds(6))
+                .setReadTimeout(Duration.ofSeconds(6))
+                .build();
         return restTemplate;
     }
 }
