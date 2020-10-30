@@ -27,7 +27,7 @@ public class RestTemplateController {
     @RequestMapping("/sayHi")
     public Map<String, Object> sayHi() {
         String body = restTemplate.getForObject("http://study-springcloud-provider/greeting/sayHi", String.class);
-        log.info(">>>>>> {}", body);
+        log.info(">>>>>> {}, {}", body, restTemplate.getRequestFactory().getClass().getSimpleName());
         return Results.ok();
     }
 
