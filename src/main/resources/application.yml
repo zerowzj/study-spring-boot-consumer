@@ -26,3 +26,4 @@ eureka:
     enabled: true
     register-with-eureka: true
     fetch-registry: true
+    registry-fetch-interval-seconds: 5
