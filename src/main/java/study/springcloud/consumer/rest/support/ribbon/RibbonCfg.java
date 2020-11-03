@@ -1,6 +1,8 @@
 package study.springcloud.consumer.rest.support.ribbon;
 
+import com.netflix.loadbalancer.IPing;
 import com.netflix.loadbalancer.IRule;
+import com.netflix.loadbalancer.NoOpPing;
 import com.netflix.loadbalancer.RandomRule;
 import com.netflix.loadbalancer.RoundRobinRule;
 import lombok.extern.slf4j.Slf4j;
@@ -20,10 +22,10 @@ public class RibbonCfg {
 
 
 //    @Bean
-//    public IPing ribbonPing() {
-//        IPing ping = new NoOpPing();
-//        return ping;
-//    }
+    public IPing ribbonPing() {
+        IPing ping = new NoOpPing();
+        return ping;
+    }
 
 //    @Bean
 //    public ServerList<Server> ribbonServerList() {
