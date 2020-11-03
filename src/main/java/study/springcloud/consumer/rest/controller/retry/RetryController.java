@@ -2,32 +2,36 @@ package study.springcloud.consumer.rest.controller.retry;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import study.springcloud.consumer.rest.support.Results;
+
+import java.util.Map;
 
 @Slf4j
 @RestController
+@RequestMapping("/retry")
 public class RetryController {
 
     @Autowired
     private RestTemplate restTemplate;
 
-    //    @Retryable(maxAttempts = 6)
-    @PostMapping("/retry")
-    public void retry(@RequestParam int code) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        MultiValueMap<String, Object> param = new LinkedMultiValueMap<>();
-        param.add("code", code);
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity(param, headers);
-        restTemplate.postForObject("http://study-springcloud-provider/retry", request, Void.class);
+    @PostMapping("/timeout")
+    public Map<String, Object> timeout(@RequestParam long timeout) {
+        String url = "http://study-springcloud-provider/timeout?timeout=" + timeout;
+        String body = restTemplate.getForObject(url, String.class);
+        log.info(">>>>>> {}", body);
+        return Results.ok();
+    }
+
+    @PostMapping("/code")
+    public Map<String, Object> code(@RequestParam int code) {
+        String url = "http://study-springcloud-provider/retry?code=" + code;
+        String body = restTemplate.getForObject(url, String.class);
+        log.info(">>>>>> {}", body);
+        return Results.ok();
     }
 }
