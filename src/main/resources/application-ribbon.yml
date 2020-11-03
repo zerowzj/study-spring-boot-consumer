@@ -48,7 +48,7 @@ study-springcloud-provider:
     #负载均衡器操作接口（ILoadBalancer）
     #    NFLoadBalancerClassName: com.netflix.loadbalancer.ZoneAwareLoadBalancer
     #负载均衡算法（IRule）
-#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
     #服务可用性检查（IPing）
 #    NFLoadBalancerPingClassName: com.netflix.loadbalancer.PingUrl
 #    #服务实例清单维护机制，服务列表获取（ServerList）
