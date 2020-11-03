@@ -14,7 +14,7 @@ import java.util.Map;
 @Slf4j
 @RestController
 @RequestMapping("/rest")
-public class RestTemplateController {
+public class RestXController {
 
     @Autowired
     private RestTemplate restTemplate;

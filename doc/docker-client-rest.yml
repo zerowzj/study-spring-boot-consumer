@@ -2,7 +2,7 @@ version: '3.6'
 services:
   #
   study-springcloud-client-rest:
-    image: study/study-springcloud-client-rest:1
+    image: study/study-springcloud-client-client:1
     ports:
       - "7400:7400"
     environment:
