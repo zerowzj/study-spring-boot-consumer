@@ -16,7 +16,7 @@ ribbon:
   #（▲）http客户端！！！
   restclient:
     enabled: true
-  #（★）连接
+  #（▲）连接
   #最大连接数
   MaxTotalConnections: 5000
   #每个主机的最大连接数
