@@ -1,4 +1,4 @@
-package study.springcloud.consumer.rest.controller.loadbalance;
+package study.springcloud.consumer.rest.controller.lbalance;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-public class LoadBalanceController {
+public class LBalanceController {
 
     @Autowired
     private RestTemplate restTemplate;

@@ -1,5 +1,42 @@
-spring:
-  cloud:
-    circuitbreaker:
-      hystrix:
-        enabled:
+#（）Hystrix
+# 1.熔断针对网关对服务的调用，
+# （a）如无法找到服务、连接超时、读取超时
+# （b）
+hystrix:
+  command:
+    default:
+      #（▲）执行
+      execution:
+        timeout:
+          #执行是否启用超时，默认启用true
+          enabled: true
+        #hystrix隔离策略，默认是THREAD, 可选THREAD和SEMAPHORE
+        isolation:
+          strategy: THREAD
+          thread:
+            #命令执行超时时间，默认1000ms，时间应该大于ribbon全部重试时间的总和
+            timeoutInMilliseconds: 20000
+            #发生超时是是否中断，默认true
+            interruptOnTimeout: true
+          semaphore:
+            maxConcurrentRequests: 100
+      #（▲）熔断
+      circuitBreaker:
+        #用来跟踪circuit的健康性，如果未达标则让请求短路。默认true
+        enabled: true
+        #强制打开熔断器，如果打开这个开关，那么拒绝所有请求，默认false
+        forceOpen: false
+        #如果这个开关打开，circuit将一直关闭且忽略
+        closedOpen: true
+        #错误比率阀值，如果错误率>=该值，circuit会被打开，并短路所有请求触发fallback。默认50
+        errorThresholdPercentage: 50
+        #触发短路的时间值，当该值设为5000时，则当触发circuit break后的5000毫秒内都会拒绝request，也就是5000毫秒后才会关闭circuit
+        sleepWindowInMilliseconds: 100
+        #
+        requestVolumeThreshold: 20
+      #（▲）回退（服务降级）
+      fallback:
+        enabled: false
+        isolation:
+          semaphore:
+            maxConcurrentRequests: 50

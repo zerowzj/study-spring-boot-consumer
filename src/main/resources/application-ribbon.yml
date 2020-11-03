@@ -36,6 +36,7 @@ ribbon:
   MaxAutoRetriesNextServer: 0
   #对Http响应码进行重试
   RetryableStatusCodes: 404,500,502
+
 #（★）特殊配置
 study-springcloud-provider:
   ribbon:
