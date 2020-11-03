@@ -13,7 +13,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping("/rest")
+
 public class RestTemplateController {
 
     @Autowired
@@ -21,31 +21,34 @@ public class RestTemplateController {
     @Autowired
     private LoadBalancerClient loadBalancerClient;
 
-    /**
-     * 1.使用注解 @LoadBalanced 时，传给 RestTemplate 的url为服务名
-     */
-    @RequestMapping("/sayHi")
-    public Map<String, Object> sayHi() {
-        String url = "http://study-springcloud-provider/greeting/sayHi";
-        String body = restTemplate.getForObject(url, String.class);
-        log.info(">>>>>> {}", body);
-        String name = restTemplate.getRequestFactory().getClass().getSimpleName();
-        Map<String, Object> data = Results.data();
-        data.put("requestFactory", name);
-        return Results.ok(data);
+    @RequestMapping("/rest")
+    public Map<String, Object> call(String type) {
+        if (1 == 1) {
+            callBy();
+        } else {
+
+        }
+        return Results.ok();
     }
 
     /**
-     * 1.不使用注解 @LoadBalanced 时，手动获取服务实例，再获取 host+port
+     * 使用注解 @LoadBalanced 时，传给 RestTemplate 的url为服务名
      */
-    @RequestMapping("/sayBye")
-    public Map<String, Object> sayBye() {
+    public void callByLoadBalanced() {
+        String url = "http://study-springcloud-provider/sayHi";
+        String body = restTemplate.getForObject(url, String.class);
+        log.info(">>>>>> {}", body);
+    }
+
+    /**
+     * 不使用注解 @LoadBalanced 时，手动获取服务实例，再获取 host+port
+     */
+    public void callBy() {
         ServiceInstance serviceInstance = loadBalancerClient.choose("study-springcloud-provider");
         String host = serviceInstance.getHost();
         int port = serviceInstance.getPort();
-        StringBuffer sb = new StringBuffer("http://").append(host).append(":").append(port).append("/greeting/sayBye");
+        StringBuffer sb = new StringBuffer("http://").append(host).append(":").append(port).append("/sayHi");
         String body = restTemplate.getForObject(sb.toString(), String.class);
         log.info(">>>>>> {}", body);
-        return Results.ok();
     }
 }

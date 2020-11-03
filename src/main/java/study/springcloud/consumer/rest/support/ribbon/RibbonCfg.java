@@ -1,19 +1,22 @@
 package study.springcloud.consumer.rest.support.ribbon;
 
+import com.netflix.loadbalancer.IRule;
+import com.netflix.loadbalancer.RandomRule;
+import com.netflix.loadbalancer.RoundRobinRule;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Slf4j
 @Configuration
 public class RibbonCfg {
 
-//    @Bean
-//    public IRule ribbonRule() {
-//        new RoundRobinRule(); //轮询
-//        new RetryRule(); //
-//        IRule rule = new RoundRobinRule();
-//        return rule;
-//    }
+    @Bean
+    public IRule ribbonRule() {
+        IRule rule = new RoundRobinRule();
+//        IRule rule = new RandomRule();
+        return rule;
+    }
 
 
 //    @Bean
