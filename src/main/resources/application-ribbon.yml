@@ -51,8 +51,8 @@ study-springcloud-provider:
     ConnectTimeout: 5000
     ReadTimeout: 5000
     OkToRetryOnAllOperations: true
-    MaxAutoRetries: 0
-    MaxAutoRetriesNextServer: 0
+    MaxAutoRetries: 1
+    MaxAutoRetriesNextServer: 1
     RetryableStatusCodes: 404,500,502
 #    #负载均衡器操作接口（ILoadBalancer）
 #    NFLoadBalancerClassName: com.netflix.loadbalancer.ZoneAwareLoadBalancer
