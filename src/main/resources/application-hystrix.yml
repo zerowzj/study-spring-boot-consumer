@@ -1,3 +1,5 @@
-hystrix:
-  metrics:
-    enabled: false
+spring:
+  cloud:
+    circuitbreaker:
+      hystrix:
+        enabled:
