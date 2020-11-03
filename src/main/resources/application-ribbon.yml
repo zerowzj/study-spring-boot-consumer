@@ -1,13 +1,13 @@
-#
+
 spring:
   cloud:
     loadbalancer:
       #（▲）重试
       retry:
-        enabled: true
-#
+        enabled: false
+#（★）全局配置
 ribbon:
-  #（★）eureka！！！
+  #（▲）eureka！！！
   eureka:
     enabled: true
   #（▲）饥饿加载
@@ -20,7 +20,7 @@ ribbon:
     #指定需要饥饿加载的服务，逗号分隔
     clients:
       - study-springboot-provider
-  #（★）http客户端
+  #（▲）http客户端
   restclient:
     enabled: true
   okhttp:
@@ -30,10 +30,10 @@ ribbon:
   MaxTotalConnections: 5000
   #每个主机的最大连接数
   MaxConnectionsPerHost: 5000
-  #（★）超时
+  #（▲）超时
   ConnectTimeout: 5000
   ReadTimeout: 2000
-  #（★）重试
+  #（▲）重试
   #是否所有操作都进行重试：设置为true时，会对所有的请求进行重试；若为false，只会对get请求进行重试
   #默认情况下，get方式请求无论是连接异常还是读取异常，都会进行重试；
   #非get方式请求，只有连接异常时才会进行重试
@@ -45,13 +45,13 @@ ribbon:
   MaxAutoRetriesNextServer: 0
   #对Http响应码进行重试
   RetryableStatusCodes: 404,500,502
-#
+#（★）特殊配置
 study-springcloud-provider:
   ribbon:
     ConnectTimeout: 5000
     ReadTimeout: 5000
     OkToRetryOnAllOperations: true
-    MaxAutoRetries: 1
+    MaxAutoRetries: 0
     MaxAutoRetriesNextServer: 0
     RetryableStatusCodes: 404,500,502
 #    #负载均衡器操作接口（ILoadBalancer）
