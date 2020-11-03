@@ -26,9 +26,13 @@ public class RestTemplateController {
      */
     @RequestMapping("/sayHi")
     public Map<String, Object> sayHi() {
-        String body = restTemplate.getForObject("http://study-springcloud-provider/greeting/sayHi", String.class);
-        log.info(">>>>>> {}, {}", body, restTemplate.getRequestFactory().getClass().getSimpleName());
-        return Results.ok();
+        String url = "http://study-springcloud-provider/greeting/sayHi";
+        String body = restTemplate.getForObject(url, String.class);
+        log.info(">>>>>> {}", body);
+        String name = restTemplate.getRequestFactory().getClass().getSimpleName();
+        Map<String, Object> data = Results.data();
+        data.put("requestFactory", name);
+        return Results.ok(data);
     }
 
     /**

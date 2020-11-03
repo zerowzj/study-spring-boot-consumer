@@ -16,7 +16,7 @@ ribbon:
   #所以第一次调用的耗时不仅包含发送HTTP请求的时间，还包含创建RibbonClient的时间，
   #这样一来如果创建时间速度较慢，同时设置的超时时间又比较短的话，第一次请求很容易超时
   eager-load:
-    enabled: true
+    enabled: false
     #指定需要饥饿加载的服务，逗号分隔
     clients:
       - study-springboot-provider
@@ -25,7 +25,7 @@ ribbon:
     enabled: true
   okhttp:
     enabled: false
-  #（▲）连接
+  #（★）连接
   #最大连接数
   MaxTotalConnections: 5000
   #每个主机的最大连接数
@@ -45,14 +45,22 @@ ribbon:
   MaxAutoRetriesNextServer: 0
   #对Http响应码进行重试
   RetryableStatusCodes: 404,500,502
-
-#（★）特殊配置
-#study-springcloud-provider:
-#  ribbon:
-#    eureka:
-#      enabled: true
-#  ConnectTimeout: 3000
-#  ReadTimeout: 3000
-#  OkToRetryOnAllOperations: true
-#  MaxAutoRetries: 1
-#  MaxAutoRetriesNextServer: 1
+#
+study-springcloud-provider:
+  ribbon:
+    ConnectTimeout: 5000
+    ReadTimeout: 5000
+    OkToRetryOnAllOperations: true
+    MaxAutoRetries: 1
+    MaxAutoRetriesNextServer: 0
+    RetryableStatusCodes: 404,500,502
+#    #负载均衡器操作接口（ILoadBalancer）
+#    NFLoadBalancerClassName: com.netflix.loadbalancer.ZoneAwareLoadBalancer
+#    #负载均衡算法（IRule）
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#    #服务可用性检查（IPing）
+#    NFLoadBalancerPingClassName: com.netflix.loadbalancer.PingUrl
+#    #服务实例清单维护机制，服务列表获取（ServerList）
+#    #NIWSServerListClassName:
+#    #服务清单过滤机制，服务列表的过滤（ServerListFilter）
+#    NIWSServerListFilterClassName: com.netflix.loadbalancer.ServerListSubsetFilter
