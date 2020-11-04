@@ -18,7 +18,8 @@ public class LBalanceController {
 
     @RequestMapping("/getServerInfo")
     public Map<String, Object> getServerInfo() {
-        Map<String, Object> data = restTemplate.getForObject("http://study-springcloud-provider/getServerInfo", Map.class);
+        String url = "http://study-springcloud-provider/getServerInfo";
+        Map<String, Object> data = restTemplate.getForObject(url, Map.class);
         log.info(">>>>>> {}", data);
         return Results.ok(data);
     }

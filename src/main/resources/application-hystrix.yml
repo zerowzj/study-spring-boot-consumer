@@ -34,7 +34,7 @@ hystrix:
         sleepWindowInMilliseconds: 100
         #
         requestVolumeThreshold: 20
-      #（▲）回退（服务降级）
+      #（▲）降级
       fallback:
         enabled: false
         isolation:

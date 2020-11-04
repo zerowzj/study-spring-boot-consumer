@@ -1,5 +1,6 @@
 package study.springcloud.consumer.rest.controller.retry;
 
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class RetryController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @PostMapping("/timeout")
+    @RequestMapping("/timeout")
     public Map<String, Object> timeout(@RequestParam long timeout) {
         String url = "http://study-springcloud-provider/timeout?timeout=" + timeout;
         String body = restTemplate.getForObject(url, String.class);
@@ -27,9 +28,43 @@ public class RetryController {
         return Results.ok();
     }
 
-    @PostMapping("/code")
+    @RequestMapping("/timeoutByGet")
+    public Map<String, Object> timeoutByGet(@RequestParam long timeout) {
+        String url = "http://study-springcloud-provider/timeoutByGet?timeout=" + timeout;
+        String body = restTemplate.getForObject(url, String.class);
+        log.info(">>>>>> {}", body);
+        return Results.ok();
+    }
+
+    @RequestMapping("/timeoutByPost")
+    public Map<String, Object> timeoutByPost(@RequestParam long timeout) {
+        String url = "http://study-springcloud-provider/timeoutByPost";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("timeout", timeout);
+        String body = restTemplate.postForObject(url, params, String.class);
+        log.info(">>>>>> {}", body);
+        return Results.ok();
+    }
+
+    @RequestMapping("/code")
     public Map<String, Object> code(@RequestParam int code) {
         String url = "http://study-springcloud-provider/retry?code=" + code;
+        String body = restTemplate.getForObject(url, String.class);
+        log.info(">>>>>> {}", body);
+        return Results.ok();
+    }
+
+    @RequestMapping("/codeByGet")
+    public Map<String, Object> codeByGet(@RequestParam int code) {
+        String url = "http://study-springcloud-provider/retryByGet?code=" + code;
+        String body = restTemplate.getForObject(url, String.class);
+        log.info(">>>>>> {}", body);
+        return Results.ok();
+    }
+
+    @RequestMapping("/codeByPost")
+    public Map<String, Object> codeByPost(@RequestParam int code) {
+        String url = "http://study-springcloud-provider/codeByPost?code=" + code;
         String body = restTemplate.getForObject(url, String.class);
         log.info(">>>>>> {}", body);
         return Results.ok();
