@@ -1,16 +1,14 @@
-#（）Hystrix
-# 1.熔断针对网关对服务的调用，
-# （a）如无法找到服务、连接超时、读取超时
-# （b）
+#
 hystrix:
   command:
+    #
     default:
       #（▲）执行
       execution:
         timeout:
           #执行是否启用超时，默认启用true
           enabled: true
-        #hystrix隔离策略，默认是THREAD, 可选THREAD和SEMAPHORE
+        #hystrix隔离策略，可选 THREAD 和 SEMAPHORE，默认是 THREAD,
         isolation:
           strategy: THREAD
           thread:
