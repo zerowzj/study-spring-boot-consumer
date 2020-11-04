@@ -20,14 +20,6 @@ public class RetryController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @RequestMapping("/timeout")
-    public Map<String, Object> timeout(@RequestParam long timeout) {
-        String url = "http://study-springcloud-provider/timeout?timeout=" + timeout;
-        String body = restTemplate.getForObject(url, String.class);
-        log.info(">>>>>> {}", body);
-        return Results.ok();
-    }
-
     @RequestMapping("/timeoutByGet")
     public Map<String, Object> timeoutByGet(@RequestParam long timeout) {
         String url = "http://study-springcloud-provider/timeoutByGet?timeout=" + timeout;
@@ -42,14 +34,6 @@ public class RetryController {
         Map<String, Object> params = Maps.newHashMap();
         params.put("timeout", timeout);
         String body = restTemplate.postForObject(url, params, String.class);
-        log.info(">>>>>> {}", body);
-        return Results.ok();
-    }
-
-    @RequestMapping("/code")
-    public Map<String, Object> code(@RequestParam int code) {
-        String url = "http://study-springcloud-provider/retry?code=" + code;
-        String body = restTemplate.getForObject(url, String.class);
         log.info(">>>>>> {}", body);
         return Results.ok();
     }
