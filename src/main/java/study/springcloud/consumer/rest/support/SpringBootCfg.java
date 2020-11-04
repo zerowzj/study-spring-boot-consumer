@@ -2,9 +2,11 @@ package study.springcloud.consumer.rest.support;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.retry.annotation.EnableRetry;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 
-@EnableRetry
+//
+@EnableHystrix
+//
 @EnableEurekaClient
 @SpringBootApplication(scanBasePackages = "study.springcloud.consumer.rest")
 public class SpringBootCfg {

@@ -1,9 +1,9 @@
 #
 hystrix:
   command:
-    #
+    #（）
     default:
-      #（▲）执行
+      #（▲）执行（控制HystrixCommand.run()如何执行）
       execution:
         timeout:
           #执行是否启用超时，默认启用true
@@ -18,7 +18,7 @@ hystrix:
             interruptOnTimeout: true
           semaphore:
             maxConcurrentRequests: 100
-      #（▲）熔断
+      #（▲）熔断（控制HystrixCircuitBreaker的行为）
       circuitBreaker:
         #用来跟踪circuit的健康性，如果未达标则让请求短路。默认true
         enabled: true
@@ -32,7 +32,7 @@ hystrix:
         sleepWindowInMilliseconds: 100
         #
         requestVolumeThreshold: 20
-      #（▲）降级
+      #（▲）降级（控制HystrixCommand.getFallback()如何执行）
       fallback:
         enabled: false
         isolation:
