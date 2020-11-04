@@ -19,7 +19,8 @@ public class TimeoutController {
 
     @RequestMapping("/timeout")
     public Map<String, Object> timeout(@RequestParam Long timeout) {
-        String body = restTemplate.getForObject("http://study-springcloud-provider/timeout?timeout="+timeout, String.class);
+        String url = "http://study-springcloud-provider/timeoutByGet?timeout=" + timeout;
+        String body = restTemplate.getForObject(url, String.class);
         log.info(">>>>>> {}", body);
         return Results.ok();
     }

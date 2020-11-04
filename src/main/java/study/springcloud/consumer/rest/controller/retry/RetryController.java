@@ -30,7 +30,7 @@ public class RetryController {
 
     @RequestMapping("/timeoutByPost")
     public Map<String, Object> timeoutByPost(@RequestParam long timeout) {
-        String url = "http://study-springcloud-provider/timeoutByPost";
+        String url = "http://study-springcloud-provider/timeoutByPost?timeout=" + timeout;
         Map<String, Object> params = Maps.newHashMap();
         params.put("timeout", timeout);
         String body = restTemplate.postForObject(url, params, String.class);

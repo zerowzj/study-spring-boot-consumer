@@ -3,7 +3,7 @@ spring:
   cloud:
     loadbalancer:
       retry:
-        enabled: false
+        enabled: true
 #（★）全局配置
 ribbon:
   #（▲）eureka！！！
@@ -29,17 +29,17 @@ ribbon:
   ConnectTimeout: 5000
   ReadTimeout: 2000
   #（▲）重试
-  #是否所有操作都进行重试：设置为true时，会对所有的请求进行重试；若为false，只会对get请求进行重试
-  #默认情况下，get方式请求无论是连接异常还是读取异常，都会进行重试；非get方式请求，只有连接异常时才会进行重试
-  #如果是put或post等写操作，如果服务器接口没做幂等性，会产生不好的结果，所以OkToRetryOnAllOperations慎用
-  OkToRetryOnAllOperations: true
   #同一实例最大重试次数（不包括首次调用）
   MaxAutoRetries: 1
-  #其他实例的最大重试次数（不包括首次所选的Server）
+  #其他最大重试的实例数（不包括首次所选的Server）
   MaxAutoRetriesNextServer: 1
+  #是否所有操作都进行重试：设置为true时，会对所有的请求进行重试；若为false，只会对get请求进行重试
+  #默认情况下，get方式请求无论是连接异常还是读取异常，都会进行重试；非get方式请求，只有连接异常时才会进行重试
+  #如果是put或post等写操作，如果服务器接口没做幂等性，会产生不好的结果，请慎用
+  OkToRetryOnAllOperations: true
   #默认情况下，Ribbon不会针对HTTP非正常响应状态值（如404、502等）进行重试。
   #如果您需要对特殊的Http状态进行重试，需要配置该参数。
-  RetryableStatusCodes: 404,502
+  retryableStatusCodes: 404,500,502,504
 
     #（★）特殊配置
     #study-springcloud-provider:
