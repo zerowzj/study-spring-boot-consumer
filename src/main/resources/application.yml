@@ -10,7 +10,7 @@ spring:
     name: study-springcloud-consumer-client
   main:
     web-application-type: servlet
-    banner-mode: 'off'
+    banner-mode: off
   profiles:
 #    active:  @env@
     active:  @env@, ribbon
