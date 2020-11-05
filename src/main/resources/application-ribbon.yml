@@ -9,23 +9,9 @@ ribbon:
   #（▲）eureka！！！
   eureka:
     enabled: true
-  #（▲）饥饿加载（针对@RibbonClient）
-  #是否开启饥饿加载，默认false，为true的时候会关闭懒加载
-  #Ribbon 进行客户端负载均衡的 Client 并不是在服务启动的时候就初始化好的， 而是在调用时才去创建相应的Client，
-  #所以第一次调用的耗时不仅包含发送HTTP请求的时间，还包含创建 RibbonClient 的时间，
-  #这样一来如果创建时间速度较慢，同时设置的超时时间又比较短的话，第一次请求很容易超时
-  eager-load:
-    enabled: false
-    #指定需要饥饿加载的服务，逗号分隔
-    clients:
-      - study-springboot-provider
   #（▲）http客户端！！！
   restclient:
     enabled: true
-  #（▲）连接
-  MaxTotalConnections: 100
-  MaxConnectionsPerHost: 100
-  MaxTotalHttpConnections: 100
   #（▲）超时！！！
   ConnectTimeout: 5000
   ReadTimeout: 2000
@@ -41,15 +27,30 @@ ribbon:
   #默认情况下，Ribbon不会针对HTTP非正常响应状态值（如404、502等）进行重试。
   #如果您需要对特殊的Http状态进行重试，需要配置该参数。
   RetryableStatusCodes: 500,502,504
-#（★）特殊配置
-#study-springcloud-provider:
-#  ribbon:
-#    ConnectTimeout: 5000
-#    ReadTimeout: 4000
-#    MaxAutoRetries: 2
-#    MaxAutoRetriesNextServer: 0
-#    OkToRetryOnAllOperations: true
-#    RetryableStatusCodes: 500,502,504
+  #（▲）饥饿加载（针对@RibbonClient）
+  #是否开启饥饿加载，默认false，为true的时候会关闭懒加载
+  #Ribbon 进行客户端负载均衡的 Client 并不是在服务启动的时候就初始化好的， 而是在调用时才去创建相应的Client，
+  #所以第一次调用的耗时不仅包含发送HTTP请求的时间，还包含创建 RibbonClient 的时间，
+  #这样一来如果创建时间速度较慢，同时设置的超时时间又比较短的话，第一次请求很容易超时
+  eager-load:
+    enabled: false
+    #指定需要饥饿加载的服务，逗号分隔
+    clients:
+      - study-springboot-provider
+  #（▲）连接
+  MaxTotalConnections: 100
+  MaxConnectionsPerHost: 100
+  MaxTotalHttpConnections: 100
+
+  #（★）特殊配置
+  #study-springcloud-provider:
+  #  ribbon:
+  #    ConnectTimeout: 5000
+  #    ReadTimeout: 4000
+  #    MaxAutoRetries: 2
+  #    MaxAutoRetriesNextServer: 0
+  #    OkToRetryOnAllOperations: true
+  #    RetryableStatusCodes: 500,502,504
   #负载均衡器操作接口（ILoadBalancer）
   #    NFLoadBalancerClassName: com.netflix.loadbalancer.ZoneAwareLoadBalancer
   #负载均衡算法（IRule）
