@@ -25,14 +25,15 @@ ribbon:
   #（▲）连接
   MaxTotalConnections: 100
   MaxConnectionsPerHost: 100
+  MaxTotalHttpConnections: 100
   #（▲）超时！！！
   ConnectTimeout: 5000
-  ReadTimeout: 5000
+  ReadTimeout: 2000
   #（▲）重试
   #最大重试的次数（不包括首次调用）
-  MaxAutoRetries: 0
+  MaxAutoRetries: 2
   #最大重试的实例数（不包括首次所选的Server）
-  MaxAutoRetriesNextServer: 1
+  MaxAutoRetriesNextServer: 0
   #是否所有操作都进行重试：设置为true时，会对所有的请求进行重试；若为false，只会对get请求进行重试
   #默认情况下，get方式请求无论是连接异常还是读取异常，都会进行重试；非get方式请求，只有连接异常时才会进行重试
   #如果是put或post等写操作，如果服务器接口没做幂等性，会产生不好的结果，请慎用
@@ -41,14 +42,14 @@ ribbon:
   #如果您需要对特殊的Http状态进行重试，需要配置该参数。
   RetryableStatusCodes: 500,502,504
 #（★）特殊配置
-study-springcloud-provider:
-  ribbon:
-    ConnectTimeout: 5000
-    ReadTimeout: 4000
-    MaxAutoRetries: 0
-    MaxAutoRetriesNextServer: 1
-    OkToRetryOnAllOperations: true
-    RetryableStatusCodes: 500,502,504
+#study-springcloud-provider:
+#  ribbon:
+#    ConnectTimeout: 5000
+#    ReadTimeout: 4000
+#    MaxAutoRetries: 2
+#    MaxAutoRetriesNextServer: 0
+#    OkToRetryOnAllOperations: true
+#    RetryableStatusCodes: 500,502,504
   #负载均衡器操作接口（ILoadBalancer）
   #    NFLoadBalancerClassName: com.netflix.loadbalancer.ZoneAwareLoadBalancer
   #负载均衡算法（IRule）
