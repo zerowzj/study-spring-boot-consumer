@@ -1,4 +1,10 @@
 #
+spring:
+  cloud:
+    circuit:
+      breaker:
+        enabled: true
+#
 hystrix:
   command:
     #（）
