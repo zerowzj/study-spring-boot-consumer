@@ -3,7 +3,7 @@ spring:
   cloud:
     loadbalancer:
       retry:
-        enabled: false
+        enabled: true
 #（★）全局配置
 ribbon:
   #（▲）eureka！！！
