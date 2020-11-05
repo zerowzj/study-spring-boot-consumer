@@ -23,4 +23,5 @@ public class RestTemplateCfg {
                 .build();
         return restTemplate;
     }
+
 }
