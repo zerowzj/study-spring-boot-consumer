@@ -13,7 +13,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-
+@RequestMapping("/rest")
 public class RestTemplateController {
 
     @Autowired
@@ -21,34 +21,37 @@ public class RestTemplateController {
     @Autowired
     private LoadBalancerClient loadBalancerClient;
 
-    @RequestMapping("/rest")
-    public Map<String, Object> call(String type) {
-        if (1 == 1) {
-            callBy();
-        } else {
-
-        }
-        return Results.ok();
+    @RequestMapping("/requestFactory")
+    public Map<String, Object> client() {
+        String name = restTemplate.getRequestFactory().getClass().getSimpleName();
+        Map<String, Object> data = Results.data();
+        data.put("requestFactory", name);
+        return Results.ok(data);
     }
 
     /**
      * 使用注解 @LoadBalanced 时，传给 RestTemplate 的url为服务名
      */
-    public void callByLoadBalanced() {
+    @RequestMapping("/callByLB")
+    public Map<String, Object> callByLoadBalanced() {
         String url = "http://study-springcloud-provider/sayHi";
         String body = restTemplate.getForObject(url, String.class);
-        log.info(">>>>>> {}", body);
+        Map<String, Object> data = Results.data();
+        data.put("msg", body);
+        return Results.ok(data);
     }
 
     /**
      * 不使用注解 @LoadBalanced 时，手动获取服务实例，再获取 host+port
      */
-    public void callBy() {
+    @RequestMapping("/callByGet")
+    public Map<String, Object> call() {
         ServiceInstance serviceInstance = loadBalancerClient.choose("study-springcloud-provider");
         String host = serviceInstance.getHost();
         int port = serviceInstance.getPort();
         StringBuffer sb = new StringBuffer("http://").append(host).append(":").append(port).append("/sayHi");
         String body = restTemplate.getForObject(sb.toString(), String.class);
         log.info(">>>>>> {}", body);
+        return Results.ok();
     }
 }
