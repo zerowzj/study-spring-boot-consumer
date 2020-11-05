@@ -37,14 +37,14 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!-- ============================== -->
-        <!--（★）SpringCloud Eureka Client  -->
+        <!--（★）Eureka Client             -->
         <!-- ============================== -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <!-- ============================== -->
-        <!--（★）SpringCloud Ribbon         -->
+        <!--（★）Ribbon                    -->
         <!-- ============================== -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -58,7 +58,7 @@
             <artifactId>spring-retry</artifactId>
         </dependency>
         <!-- ============================== -->
-        <!--（★）SpringCloud Hystrix       -->
+        <!--（★）Hystrix                   -->
         <!-- ============================== -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
