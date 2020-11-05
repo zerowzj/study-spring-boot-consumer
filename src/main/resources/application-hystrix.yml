@@ -1,8 +1,8 @@
 #
 spring:
   cloud:
-    circuit:
-      breaker:
+    circuitbreaker:
+      hystrix:
         enabled: true
 #
 hystrix:

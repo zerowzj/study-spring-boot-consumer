@@ -13,8 +13,8 @@ spring:
     banner-mode: off
   profiles:
 #    active:  @env@
-    active:  @env@, ribbon
-    #active: @env@, ribbon, hystrix
+#    active:  @env@, ribbon
+    active: @env@, ribbon, hystrix
 #
 eureka:
   instance:
@@ -28,4 +28,3 @@ eureka:
     enabled: true
     register-with-eureka: true
     fetch-registry: true
-    registry-fetch-interval-seconds: 5
