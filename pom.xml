@@ -51,18 +51,18 @@
             <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
         </dependency>
         <!-- ============================== -->
-        <!--（★）SpringCloud Hystrix       -->
-        <!-- ============================== -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-        </dependency>
-        <!-- ============================== -->
         <!-- （★）Spring Retry             -->
         <!-- ============================== -->
         <dependency>
             <groupId>org.springframework.retry</groupId>
             <artifactId>spring-retry</artifactId>
+        </dependency>
+        <!-- ============================== -->
+        <!--（★）SpringCloud Hystrix       -->
+        <!-- ============================== -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
 
         <dependency>
