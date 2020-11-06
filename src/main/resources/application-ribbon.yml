@@ -45,8 +45,10 @@ ribbon:
   #（★）特殊配置
   #study-springcloud-provider:
   #  ribbon:
+  #    #超时！！！
   #    ConnectTimeout: 5000
   #    ReadTimeout: 4000
+  #    #重试
   #    MaxAutoRetries: 2
   #    MaxAutoRetriesNextServer: 0
   #    OkToRetryOnAllOperations: true
