@@ -12,8 +12,8 @@ spring:
     web-application-type: servlet
     banner-mode: off
   profiles:
-#    active:  @env@
-    active:  @env@, ribbon
+    active:  @env@
+#    active:  @env@, ribbon
 #    active: @env@, ribbon, hystrix
 #
 eureka:
