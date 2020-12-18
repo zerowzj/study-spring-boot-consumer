@@ -6,31 +6,40 @@ spring:
         enabled: true
 #
 hystrix:
-  command:
-    #（）
+  threadpool:
     default:
-      #（▲）控制HystrixCommand.run()如何执行
+      #核心线程大小
+      coreSize: 10
+      #对列大小， 如果为-1，则不放入队列，直接进行降级 fallback
+      maxQueueSize: 1
+      #队列大小超限的阈值，超限就直接降级
+      queueSizeRejectionThreshold: 1
+  command:
+    default:
+      #（▲）执行策略（控制HystrixCommand.run()如何执行）
       execution:
         timeout:
-          #执行是否启用超时，默认启用true
+          #是否启用超时，默认true
           enabled: true
-        #hystrix隔离策略，可选 THREAD 和 SEMAPHORE，默认是 THREAD,
+        #隔离策略，THREAD/SEMAPHORE
         isolation:
           strategy: THREAD
           thread:
             #命令执行超时时间，默认1000ms，时间应该大于ribbon全部重试时间的总和
             timeoutInMilliseconds: 20000
-            #发生超时是是否中断，默认true
+            #超时时中断线程，默认true
             interruptOnTimeout: true
+            #取消时候中断线程
+            interruptOnFutureCancel: true
           semaphore:
             maxConcurrentRequests: 100
-      #（▲）熔断（控制HystrixCircuitBreaker的行为）
+      #（▲）熔断策略（控制HystrixCircuitBreaker的行为）
       circuitBreaker:
-        #用来跟踪circuit的健康性，如果未达标则让请求短路。默认true
+        #启用/禁用熔断机制。默认true
         enabled: true
-        #强制打开熔断器，如果打开这个开关，那么拒绝所有请求，默认false
+        #强制开启熔断，如果打开这个开关，那么拒绝所有请求，默认false
         forceOpen: false
-        #如果这个开关打开，circuit将一直关闭且忽略
+        #强制关闭熔断，如果这个开关打开，circuit将一直关闭且忽略
         closedOpen: true
         #错误比率阀值，如果错误率>=该值，circuit会被打开，并短路所有请求触发fallback。默认50
         errorThresholdPercentage: 50
@@ -38,7 +47,7 @@ hystrix:
         sleepWindowInMilliseconds: 100
         #
         requestVolumeThreshold: 20
-      #（▲）降级（控制HystrixCommand.getFallback()如何执行）
+      #（▲）降级策略（控制HystrixCommand.getFallback()如何执行）
       fallback:
         enabled: false
         isolation:

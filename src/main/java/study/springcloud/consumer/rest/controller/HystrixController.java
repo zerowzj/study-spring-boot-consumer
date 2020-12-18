@@ -1,4 +1,4 @@
-package study.springcloud.consumer.rest.controller.hystrix;
+package study.springcloud.consumer.rest.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
