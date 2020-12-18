@@ -1,4 +1,4 @@
-package study.springcloud.consumer.rest.support;
+package study.springcloud.consumer.rest.support.utils;
 
 import com.google.common.collect.Maps;
 

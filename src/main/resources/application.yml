@@ -3,18 +3,7 @@ server:
   port: 7400
 #
 logging:
-  config: classpath:logback-spring.xml
-#
-spring:
-  application:
-    name: study-springcloud-consumer-client
-  main:
-    web-application-type: servlet
-    banner-mode: off
-  profiles:
-    active:  @env@
-#    active:  @env@, ribbon
-#    active: @env@, ribbon, hystrix
+  config: classpath:logback.xml
 #
 eureka:
   instance:
@@ -28,3 +17,14 @@ eureka:
     enabled: true
     register-with-eureka: true
     fetch-registry: true
+#
+spring:
+  application:
+    name: study-springcloud-consumer-client
+  main:
+    web-application-type: servlet
+    banner-mode: off
+  profiles:
+    active:  @env@
+#    active:  @env@, ribbon
+#    active: @env@, ribbon, hystrix

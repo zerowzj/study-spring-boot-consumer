@@ -9,7 +9,7 @@ hystrix:
   command:
     #（）
     default:
-      #（▲）执行（控制HystrixCommand.run()如何执行）
+      #（▲）控制HystrixCommand.run()如何执行
       execution:
         timeout:
           #执行是否启用超时，默认启用true
