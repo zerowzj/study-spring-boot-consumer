@@ -7,7 +7,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import study.springcloud.consumer.rest.support.Results;
+import study.springcloud.consumer.rest.support.utils.Results;
 
 import java.util.Map;
 
