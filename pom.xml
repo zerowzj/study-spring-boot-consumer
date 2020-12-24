@@ -92,6 +92,29 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <skipAssembly>false</skipAssembly>
+                    <!-- 打包文件输出目录 -->
+                    <outputDirectory></outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -106,10 +129,31 @@
             </activation>
         </profile>
         <profile>
-            <id>dev</id>
+            <id>ecs</id>
             <properties>
-                <env>dev</env>
+                <env>ecs</env>
             </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>wagon-maven-plugin</artifactId>
+                        <version>2.0.0</version>
+                        <configuration>
+                            <url><![CDATA[scp://wzhj:wzj!#135@150.158.110.15/xdfapp]]></url>
+                            <!--                            <url><![CDATA[scp://wzhj:wzj!#135@111.229.94.31/xdfapp]]></url>-->
+                            <fromFile>target/${project.artifactId}-${project.version}.tar.gz</fromFile>
+                            <displayCommandOutputs>true</displayCommandOutputs>
+                            <commands>
+                                <command>rm -rf /xdfapp/${project.artifactId}; sleep 1</command>
+                                <command>cd /xdfapp; tar -zxvf ${project.artifactId}-${project.version}.tar.gz</command>
+                                <command>sleep 1</command>
+                                <command>sh /xdfapp/${project.artifactId}/server.sh restart</command>
+                            </commands>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
         <profile>
             <id>docker</id>
