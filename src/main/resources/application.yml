@@ -7,7 +7,7 @@ logging:
 #
 spring:
   application:
-    name: study-springcloud-consumer-client
+    name: study-springcloud-consumer-rest
   main:
     web-application-type: servlet
     banner-mode: off
